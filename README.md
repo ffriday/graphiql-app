@@ -26,6 +26,7 @@ A playground/IDE for graphQL requests.
 - Eslint
 - Prettier
 - Husky
+- Styled Components
 
 ## Setup
 
