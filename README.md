@@ -1,30 +1,73 @@
-# React + TypeScript + Vite
+## Project Title
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GraphiQL
 
-Currently, two official plugins are available:
+## Table of Content:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [About The App](#about-the-app)
+- [Technologies](#technologies)
+- [Setup](#setup)
+- [Development mode](#development-mode)
+- [Build mode](#build-mode)
+- [Testing](#testing)
+- [Eslint](#eslint)
+- [Prettier](#prettier)
 
-## Expanding the ESLint configuration
+## About The App
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+A playground/IDE for graphQL requests.
 
-- Configure the top-level `parserOptions` property like this:
+## Technologies
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+- React
+- React Testing Library
+- React Router
+- TypeScript
+- Eslint
+- Prettier
+- Husky
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Setup
+
+- download or clone the repository
+- run `npm install`
+
+## Development mode
+
+To run the project in development mode, run the following command in your terminal:
+
+- run `npm dev`
+
+## Build mode
+
+To build the project, run the following command in your terminal:
+
+-run `npm run build`
+
+The built project will be saved in the dist directory.
+
+## Testing
+
+To run the project's tests, run the following command in your terminal:
+
+- run `npm test`
+
+To run the project's tests with coverage statistics, run:
+
+- run `npm coverage`
+
+## Eslint
+
+Eslint is a tool that helps you write better code by enforcing a set of coding conventions. To run eslint check on the project, run the following command in your terminal:
+
+- run `npm run lint`
+
+To fix eslint errors, run the following command in your terminal:
+
+- run `npm run fix`;
+
+## Prettier
+
+Prettier is a tool that formats your code in a consistent style. To run prettier on the project, run the following command in your terminal:
+
+- run `npm run prettier`
