@@ -43,7 +43,7 @@ To run the project in development mode, run the following command in your termin
 
 To build the project, run the following command in your terminal:
 
--run `npm run build`
+- run `npm run build`
 
 The built project will be saved in the dist directory.
 
