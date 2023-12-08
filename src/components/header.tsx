@@ -1,17 +1,17 @@
 import { NavLink } from "react-router-dom";
-export const APP_ROUTES = {
-  WELCOME: "/",
-  SIGNIN: "sign_in",
-  SIGNUP: "sign_up",
-  GRAPHIQL: "graphiQL",
-};
+import { APP_ROUTES } from "../constants/constants";
+import { LanguageSelector } from "./LanguageSelector";
+
 export const Header = () => {
   return (
-    <nav>
-      <NavLink to={APP_ROUTES.WELCOME}>Welcome</NavLink>
-      <NavLink to={APP_ROUTES.SIGNIN}>Sign in</NavLink>
-      <NavLink to={APP_ROUTES.SIGNUP}>Sign up</NavLink>
-      <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
-    </nav>
+    <>
+      <nav>
+        <NavLink to={APP_ROUTES.WELCOME}>Welcome</NavLink>
+        <NavLink to={APP_ROUTES.SIGNIN}>Sign in</NavLink>
+        <NavLink to={APP_ROUTES.SIGNUP}>Sign up</NavLink>
+        <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
+      </nav>
+      <LanguageSelector />
+    </>
   );
 };

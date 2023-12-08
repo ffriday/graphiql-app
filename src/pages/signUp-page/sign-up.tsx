@@ -1,8 +1,11 @@
+import { useAppContext } from "../../provisers/LangProvider";
+
 export const SignUpPage = () => {
+  const { language } = useAppContext();
+  const SignUpTitle = language === "ru" ? "Регистрация" : "Sign up";
   return (
     <>
-      <h1>Sign up Page?</h1>
-      <p>The Sign up page...</p>
+      <h1>{SignUpTitle}</h1>
     </>
   );
 };

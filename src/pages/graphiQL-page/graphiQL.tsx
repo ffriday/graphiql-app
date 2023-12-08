@@ -1,8 +1,15 @@
+import { useAppContext } from "../../provisers/LangProvider";
+
 export const GraphiQLPage = () => {
+  const { language } = useAppContext();
+  const GraphiQLMessage =
+    language === "ru"
+      ? "Здесь будет всё самое интересное"
+      : "All the most interesting things will be here";
   return (
     <>
-      <h1>GraphiQL Page?</h1>
-      <p>The GraphiQL page of...</p>
+      <h1>GraphiQL</h1>
+      <p>{GraphiQLMessage}</p>
     </>
   );
 };
