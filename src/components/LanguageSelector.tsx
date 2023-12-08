@@ -12,7 +12,11 @@ export const LanguageSelector = () => {
   };
 
   return (
-    <select value={language} onChange={handleLanguageChange}>
+    <select
+      className="lang-select"
+      value={language}
+      onChange={handleLanguageChange}
+    >
       <option value={LANGUAGES.EN}>English</option>
       <option value={LANGUAGES.RU}>Русский</option>
     </select>
