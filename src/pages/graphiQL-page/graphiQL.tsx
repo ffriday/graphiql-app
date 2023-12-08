@@ -1,4 +1,5 @@
 import { useAppContext } from "../../provisers/LangProvider";
+import "./graphiQL.css";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
@@ -10,6 +11,13 @@ export const GraphiQLPage = () => {
     <>
       <h1>GraphiQL</h1>
       <p>{GraphiQLMessage}</p>
+      <div className="graphiQL-container">
+        <aside className="settings"></aside>
+        <main className="session">
+          <div className="editor"></div>
+          <div className="response"></div>
+        </main>
+      </div>
     </>
   );
 };
