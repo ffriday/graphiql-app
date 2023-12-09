@@ -5,6 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorInfo from "../../components/FormErrorInfo/ErrorInfo";
 import styles from "./sign-in.module.scss";
 import { signUpSchema } from "../../constants/signUpValidation";
+import { AuthContext } from "../../provisers/AuthProviders";
+import { useContext } from "react";
 
 interface ISignUpData {
   email: string;
@@ -12,6 +14,7 @@ interface ISignUpData {
   anotherPassword: string;
 }
 export const SignUpPage = () => {
+  const { handleRegisterWithCredentials } = useContext(AuthContext);
   const { language } = useAppContext();
   const { signUp } = lang[language as keyof typeof LANGUAGES];
   const {
@@ -25,6 +28,7 @@ export const SignUpPage = () => {
   });
   const onSubmit = (data: ISignUpData) => {
     console.log(data);
+    handleRegisterWithCredentials(data.password, data.email);
     reset();
   };
 

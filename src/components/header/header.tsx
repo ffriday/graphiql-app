@@ -4,11 +4,14 @@ import { LanguageSelector } from "../LanguageSelector";
 import { useAppContext } from "../../provisers/LangProvider";
 import "./header.css";
 import { LANGUAGES, lang } from "../../constants/lang";
+import { useContext } from "react";
+import { AuthContext } from "../../provisers/AuthProviders";
 
 export const Header = () => {
   const { language } = useAppContext();
   const { signOut, signIn, signUp, welcome } =
     lang[language as keyof typeof LANGUAGES];
+  const { handleLogOut } = useContext(AuthContext);
 
   return (
     <div className="header">
@@ -18,7 +21,7 @@ export const Header = () => {
         <NavLink to={APP_ROUTES.SIGNUP}>{signUp}</NavLink>
         <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
       </nav>
-      <button>{signOut}</button>
+      <button onClick={handleLogOut}>{signOut}</button>
       <LanguageSelector />
     </div>
   );

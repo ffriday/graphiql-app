@@ -5,6 +5,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorInfo from "../../components/FormErrorInfo/ErrorInfo";
 import styles from "./sign-in.module.scss";
 import { signInSchema } from "../../constants/signInValidation";
+import { useContext } from "react";
+import { AuthContext } from "../../provisers/AuthProviders";
 
 interface ISignInData {
   email: string;
@@ -12,6 +14,8 @@ interface ISignInData {
 }
 
 export const SignInPage = () => {
+  const { handleLoginWithGoogle, handleLoginWithCredentials } =
+    useContext(AuthContext);
   const { language } = useAppContext();
   const { signIn } = lang[language as keyof typeof LANGUAGES];
   const {
@@ -25,6 +29,7 @@ export const SignInPage = () => {
   });
   const onSubmit = (data: ISignInData) => {
     console.log(data);
+    handleLoginWithCredentials(data.password, data.email);
     reset();
   };
 
@@ -43,7 +48,10 @@ export const SignInPage = () => {
         <button type="submit" disabled={!isValid}>
           {signIn}
         </button>
-        <button type="button"> Google </button>
+        <button type="button" onClick={handleLoginWithGoogle}>
+          {" "}
+          Google{" "}
+        </button>
       </form>
     </div>
   );
