@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { LANGUAGES } from "../constants/constants";
+import { LANGUAGES } from "../constants/lang";
 
 type AppContextType = {
   language: string;
