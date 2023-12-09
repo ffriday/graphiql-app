@@ -1,11 +1,12 @@
+import { LANGUAGES, lang } from "../../constants/lang";
 import { useAppContext } from "../../provisers/LangProvider";
 
 export const SignUpPage = () => {
   const { language } = useAppContext();
-  const SignUpTitle = language === "ru" ? "Регистрация" : "Sign up";
+  const { signUp } = lang[language as keyof typeof LANGUAGES];
   return (
     <>
-      <h1>{SignUpTitle}</h1>
+      <h1>{signUp}</h1>
     </>
   );
 };

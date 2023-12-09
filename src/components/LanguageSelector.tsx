@@ -1,4 +1,4 @@
-import { LANGUAGES } from "../constants/constants";
+import { LANGUAGES } from "../constants/lang";
 import { useAppContext } from "../provisers/LangProvider";
 
 export const LanguageSelector = () => {

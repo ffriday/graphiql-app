@@ -1,9 +1,9 @@
+import { LANGUAGES, lang } from "../../constants/lang";
 import { useAppContext } from "../../provisers/LangProvider";
 
 export const WelcomePage = () => {
   const { language } = useAppContext();
-  const welcomeMessage =
-    language === "ru" ? "Добро пожаловать в приложение" : "Welcome to the app";
+  const { welcomeMessage } = lang[language as keyof typeof LANGUAGES];
   return (
     <>
       <h1>{welcomeMessage}</h1>

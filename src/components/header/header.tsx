@@ -3,13 +3,12 @@ import { APP_ROUTES } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
 import { useAppContext } from "../../provisers/LangProvider";
 import "./header.css";
+import { LANGUAGES, lang } from "../../constants/lang";
 
 export const Header = () => {
   const { language } = useAppContext();
-  const signOut = language === "ru" ? "Выйти" : "Sign out";
-  const welcome = language === "ru" ? "Стартовая страница" : "Welcome";
-  const signIn = language === "ru" ? "Вход" : "Sign in";
-  const signUp = language === "ru" ? "Регистрация" : "Sign up";
+  const { signOut, signIn, signUp, welcome } =
+    lang[language as keyof typeof LANGUAGES];
 
   return (
     <div className="header">
