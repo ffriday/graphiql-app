@@ -2,11 +2,12 @@ import { LANGUAGES, lang } from "../../constants/lang";
 import { useAppContext } from "../../provisers/LangProvider";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import ErrorInfo from "../../components/FormErrorInfo/ErrorInfo";
 import styles from "./sign-in.module.scss";
 import { signInSchema } from "../../constants/signInValidation";
 import { useContext } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 interface ISignInData {
   email: string;
@@ -37,21 +38,37 @@ export const SignInPage = () => {
     <div className="container-auth">
       <h2>{signIn}</h2>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="E-mail" {...register("email")} />
-        <ErrorInfo errors={errors.email} />
-        <input
+        <TextField
+          placeholder="E-mail"
+          {...register("email")}
+          variant="outlined"
+          error={!!errors.email}
+          helperText={errors.email?.message || ""}
+        />
+        {/* <ErrorInfo errors={errors.email} /> */}
+        <TextField
           type="password"
           placeholder="Password"
           {...register("password")}
+          variant="outlined"
+          error={!!errors.password}
+          helperText={errors.password?.message || ""}
         />
-        <ErrorInfo errors={errors.password} />
-        <button type="submit" disabled={!isValid}>
+        <Button
+          type="submit"
+          disabled={!isValid}
+          variant="contained"
+          color="success"
+        >
           {signIn}
-        </button>
-        <button type="button" onClick={handleLoginWithGoogle}>
-          {" "}
-          Google{" "}
-        </button>
+        </Button>
+        <Button
+          type="button"
+          onClick={handleLoginWithGoogle}
+          variant="contained"
+        >
+          Google
+        </Button>
       </form>
     </div>
   );

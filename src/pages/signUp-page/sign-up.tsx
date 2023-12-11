@@ -2,11 +2,12 @@ import { LANGUAGES, lang } from "../../constants/lang";
 import { useAppContext } from "../../provisers/LangProvider";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import ErrorInfo from "../../components/FormErrorInfo/ErrorInfo";
 import styles from "./sign-in.module.scss";
 import { signUpSchema } from "../../constants/signUpValidation";
 import { AuthContext } from "../../provisers/AuthProviders";
 import { useContext } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
 interface ISignUpData {
   email: string;
@@ -36,23 +37,39 @@ export const SignUpPage = () => {
     <div className="container-auth">
       <h2>{signUp}</h2>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="E-mail" {...register("email")} />
-        <ErrorInfo errors={errors.email} />
-        <input
+        <TextField
+          placeholder="E-mail"
+          {...register("email")}
+          variant="outlined"
+          error={!!errors.email}
+          helperText={errors.email?.message || ""}
+        />
+        <TextField
           type="password"
           placeholder="Password"
           {...register("password")}
+          variant="outlined"
+          error={!!errors.password}
+          helperText={errors.password?.message || ""}
         />
-        <ErrorInfo errors={errors.password} />
-        <input
+        <TextField
           type="password"
-          placeholder="Password"
-          {...register("anotherPassword")}
+          placeholder="Repeat your password"
+          {...register("password")}
+          variant="outlined"
+          error={!!errors.anotherPassword}
+          helperText={errors.anotherPassword?.message || ""}
         />
-        <ErrorInfo errors={errors.anotherPassword} />
-        <button type="submit" disabled={!isValid}>
-          {signUp}
-        </button>
+        <div>
+          <Button
+            type="submit"
+            disabled={!isValid}
+            variant="contained"
+            color="success"
+          >
+            {signUp}
+          </Button>
+        </div>
       </form>
     </div>
   );
