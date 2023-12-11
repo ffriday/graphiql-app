@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./sign-in.module.scss";
 import { signInSchema } from "../../constants/signInValidation";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useNavigate } from "react-router-dom";
+import { APP_ROUTES } from "../../constants/constants";
 
 interface ISignInData {
   email: string;
@@ -15,10 +17,13 @@ interface ISignInData {
 }
 
 export const SignInPage = () => {
+  const { status, userId } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { handleLoginWithGoogle, handleLoginWithCredentials } =
     useContext(AuthContext);
   const { language } = useAppContext();
-  const { signIn } = lang[language as keyof typeof LANGUAGES];
+  const { signIn, passwordPlaceholder } =
+    lang[language as keyof typeof LANGUAGES];
   const {
     register,
     formState: { errors, isValid },
@@ -28,8 +33,12 @@ export const SignInPage = () => {
     mode: "onChange",
     resolver: yupResolver(signInSchema),
   });
+  useEffect(() => {
+    if (status === "authenticated" && userId) {
+      navigate(`/${APP_ROUTES.GRAPHIQL}`);
+    }
+  }, [status, navigate, userId]);
   const onSubmit = (data: ISignInData) => {
-    console.log(data);
     handleLoginWithCredentials(data.password, data.email);
     reset();
   };
@@ -45,10 +54,9 @@ export const SignInPage = () => {
           error={!!errors.email}
           helperText={errors.email?.message || ""}
         />
-        {/* <ErrorInfo errors={errors.email} /> */}
         <TextField
           type="password"
-          placeholder="Password"
+          placeholder={passwordPlaceholder}
           {...register("password")}
           variant="outlined"
           error={!!errors.password}

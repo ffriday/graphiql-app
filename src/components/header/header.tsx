@@ -6,12 +6,17 @@ import "./header.css";
 import { LANGUAGES, lang } from "../../constants/lang";
 import { useContext } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
+import { ToastContainer, toast } from "react-toastify";
 
 export const Header = () => {
   const { language } = useAppContext();
   const { signOut, signIn, signUp, welcome } =
     lang[language as keyof typeof LANGUAGES];
   const { handleLogOut } = useContext(AuthContext);
+  const handlerClickLogOut = () => {
+    handleLogOut();
+    toast.success("Log out success");
+  };
 
   return (
     <div className="header">
@@ -21,8 +26,9 @@ export const Header = () => {
         <NavLink to={APP_ROUTES.SIGNUP}>{signUp}</NavLink>
         <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
       </nav>
-      <button onClick={handleLogOut}>{signOut}</button>
+      <button onClick={handlerClickLogOut}>{signOut}</button>
       <LanguageSelector />
+      <ToastContainer />
     </div>
   );
 };

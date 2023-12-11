@@ -6,7 +6,8 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { FirebaseAuth } from "./config";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const googleAuth = new GoogleAuthProvider();
 
 export const singInWithGoogle = async () => {
@@ -15,7 +16,7 @@ export const singInWithGoogle = async () => {
     const { uid } = result.user;
     return uid;
   } catch (error) {
-    alert((error as Error).message);
+    toast.error((error as Error).message);
   }
 };
 
@@ -34,9 +35,10 @@ export const signInWithCredentials = async ({
       email,
       password,
     );
+    toast.success("Registration is successful!");
     return result.user.uid;
-  } catch (e) {
-    alert((e as Error).message);
+  } catch (error) {
+    toast.error((error as Error).message);
   }
 };
 
@@ -51,8 +53,8 @@ export const loginWithCredentials = async ({
       password,
     );
     return resp.user.uid;
-  } catch (e) {
-    alert((e as Error).message);
+  } catch (error) {
+    toast.error((error as Error).message);
   }
 };
 
