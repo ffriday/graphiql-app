@@ -9,13 +9,17 @@ import { AuthContext } from "../../provisers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
 
 export const Header = () => {
+  const { status, userId } = useContext(AuthContext);
   const { language } = useAppContext();
-  const { signOut, signIn, signUp, welcome } =
+  const { signOut, signIn, signUp, welcome, logOutSuccess } =
     lang[language as keyof typeof LANGUAGES];
   const { handleLogOut } = useContext(AuthContext);
+
   const handlerClickLogOut = () => {
-    handleLogOut();
-    toast.success("Log out success");
+    if (status === "authenticated" && userId) {
+      handleLogOut();
+      toast.success(logOutSuccess);
+    }
   };
 
   return (

@@ -22,8 +22,17 @@ export const SignInPage = () => {
   const { handleLoginWithGoogle, handleLoginWithCredentials } =
     useContext(AuthContext);
   const { language } = useAppContext();
-  const { signIn, passwordPlaceholder } =
-    lang[language as keyof typeof LANGUAGES];
+  const {
+    signIn,
+    passwordPlaceholder,
+    signInSuccess,
+    passwordMaxLength,
+    passwordIsRequired,
+    passwordLength,
+    passwordsDoNotMatch,
+    emailIsRequired,
+    emailValid,
+  } = lang[language as keyof typeof LANGUAGES];
   const {
     register,
     formState: { errors, isValid },
@@ -31,15 +40,25 @@ export const SignInPage = () => {
     reset,
   } = useForm({
     mode: "onChange",
-    resolver: yupResolver(signInSchema),
+    resolver: yupResolver(
+      signInSchema(
+        passwordMaxLength,
+        passwordIsRequired,
+        passwordLength,
+        passwordsDoNotMatch,
+        emailIsRequired,
+        emailValid,
+      ),
+    ),
   });
   useEffect(() => {
     if (status === "authenticated" && userId) {
       navigate(`/${APP_ROUTES.GRAPHIQL}`);
     }
   }, [status, navigate, userId]);
+
   const onSubmit = (data: ISignInData) => {
-    handleLoginWithCredentials(data.password, data.email);
+    handleLoginWithCredentials(data.password, data.email, signInSuccess);
     reset();
   };
 
@@ -51,7 +70,7 @@ export const SignInPage = () => {
           placeholder="E-mail"
           {...register("email")}
           variant="outlined"
-          error={!!errors.email}
+          error={Boolean(errors.email)}
           helperText={errors.email?.message || ""}
         />
         <TextField
@@ -59,7 +78,7 @@ export const SignInPage = () => {
           placeholder={passwordPlaceholder}
           {...register("password")}
           variant="outlined"
-          error={!!errors.password}
+          error={Boolean(errors.password)}
           helperText={errors.password?.message || ""}
         />
         <Button
@@ -72,7 +91,7 @@ export const SignInPage = () => {
         </Button>
         <Button
           type="button"
-          onClick={handleLoginWithGoogle}
+          onClick={() => handleLoginWithGoogle(signInSuccess)}
           variant="contained"
         >
           Google

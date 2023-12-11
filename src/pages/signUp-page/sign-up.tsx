@@ -17,8 +17,18 @@ interface ISignUpData {
 export const SignUpPage = () => {
   const { handleRegisterWithCredentials } = useContext(AuthContext);
   const { language } = useAppContext();
-  const { signUp, passwordPlaceholder, anotherPasswordPlacehoder } =
-    lang[language as keyof typeof LANGUAGES];
+  const {
+    signUp,
+    passwordPlaceholder,
+    anotherPasswordPlacehoder,
+    signUpSuccess,
+    passwordMaxLength,
+    passwordIsRequired,
+    passwordLength,
+    passwordsDoNotMatch,
+    emailIsRequired,
+    emailValid,
+  } = lang[language as keyof typeof LANGUAGES];
   const {
     register,
     formState: { errors, isValid },
@@ -26,10 +36,20 @@ export const SignUpPage = () => {
     reset,
   } = useForm({
     mode: "onChange",
-    resolver: yupResolver(signUpSchema),
+    resolver: yupResolver(
+      signUpSchema(
+        passwordMaxLength,
+        passwordIsRequired,
+        passwordLength,
+        passwordsDoNotMatch,
+        emailIsRequired,
+        emailValid,
+      ),
+    ),
   });
+
   const onSubmit = (data: ISignUpData) => {
-    handleRegisterWithCredentials(data.password, data.email);
+    handleRegisterWithCredentials(data.password, data.email, signUpSuccess);
     reset();
   };
 
@@ -41,7 +61,7 @@ export const SignUpPage = () => {
           placeholder="E-mail"
           {...register("email")}
           variant="outlined"
-          error={!!errors.email}
+          error={Boolean(errors.email)}
           helperText={errors.email?.message || ""}
         />
         <TextField
@@ -49,7 +69,7 @@ export const SignUpPage = () => {
           placeholder={passwordPlaceholder}
           {...register("password")}
           variant="outlined"
-          error={!!errors.password}
+          error={Boolean(errors.password)}
           helperText={errors.password?.message || ""}
         />
         <TextField
