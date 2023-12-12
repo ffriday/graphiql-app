@@ -4,6 +4,7 @@ import "./graphiQL.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provisers/AuthProviders";
 import { APP_ROUTES } from "../../constants/constants";
+import { SignInPage } from "../signIn-page/sign-in";
 
 export const GraphiQLPage = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export const GraphiQLPage = () => {
       navigate(`/${APP_ROUTES.SIGNIN}`);
     }
   }, [status, navigate, userId]);
-  return (
+  return status === "authenticated" && userId ? (
     <>
       <h1>GraphiQL</h1>
       <p>{GraphiQLMessage}</p>
@@ -30,5 +31,7 @@ export const GraphiQLPage = () => {
         </main>
       </div>
     </>
+  ) : (
+    <SignInPage />
   );
 };
