@@ -1,4 +1,4 @@
-import { useAppContext } from "../../provisers/LangProvider";
+import { useAppContext } from "../../providers/LangProvider";
 import "./graphiQL.css";
 
 export const GraphiQLPage = () => {
