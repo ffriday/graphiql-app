@@ -22,6 +22,7 @@ export interface IAuthContext {
     successMessage: string,
   ) => Promise<void>;
   handleLogOut: () => Promise<void>;
+  setSession: (value: AuthState) => void
 }
 
 export const AuthContext = createContext({} as IAuthContext);
@@ -101,6 +102,7 @@ export const AuthProvider = ({ children }: IElement) => {
         handleLoginWithCredentials,
         handleRegisterWithCredentials,
         handleLogOut,
+        setSession
       }}
     >
       {children}

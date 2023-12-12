@@ -5,13 +5,27 @@ import { RouterProvider } from "react-router-dom";
 import { AppContextProvider } from "./provisers/LangProvider";
 import { router } from "./router";
 import { AuthProvider } from "./provisers/AuthProviders";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AuthProvider>
-      <AppContextProvider>
-        <RouterProvider router={router} />
-      </AppContextProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <AppContextProvider>
+          <RouterProvider router={router} />
+        </AppContextProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>,
 );
