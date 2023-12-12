@@ -1,8 +1,8 @@
-import { LANGUAGES, lang } from "../../constants/lang";
+import { LANGUAGES, lang } from "../../providers/constants";
 import { useAppContext } from "../../providers/LangProvider";
 
 export const ErrorPage = () => {
   const { language } = useAppContext();
-  const { errorMessage } = lang[language as keyof typeof LANGUAGES];
+  const { errorMessage } = lang[language as LANGUAGES];
   return <h1>{errorMessage}</h1>;
 };

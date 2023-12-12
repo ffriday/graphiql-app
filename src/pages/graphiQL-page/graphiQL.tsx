@@ -1,16 +1,14 @@
 import { useAppContext } from "../../providers/LangProvider";
+import { LANGUAGES, lang } from "../../providers/constants";
 import "./graphiQL.css";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
-  const GraphiQLMessage =
-    language === "ru"
-      ? "Здесь будет всё самое интересное"
-      : "All the most interesting things will be here";
+  const { graphiQLMessage } = lang[language as LANGUAGES];
   return (
     <>
       <h1>GraphiQL</h1>
-      <p>{GraphiQLMessage}</p>
+      <p>{graphiQLMessage}</p>
       <div className="graphiQL-container">
         <aside className="settings"></aside>
         <main className="session">

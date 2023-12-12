@@ -3,7 +3,7 @@ import { APP_ROUTES } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
 import { useAppContext } from "../../providers/LangProvider";
 import "./Header.css";
-import { LANGUAGES, lang } from "../../constants/lang";
+import { LANGUAGES, lang } from "../../providers/constants";
 
 export const Header = () => {
   const { language } = useAppContext();

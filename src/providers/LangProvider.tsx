@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from "react";
-import { LANGUAGES } from "../constants/lang";
+import { LANGUAGES } from "./constants";
 
 type AppContextType = {
-  language: string;
-  setLanguage: (language: string) => void;
+  language: LANGUAGES;
+  setLanguage: (language: LANGUAGES) => void;
 };
 
 export const AppContext = createContext<AppContextType>({
