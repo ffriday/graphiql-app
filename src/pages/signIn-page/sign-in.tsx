@@ -4,13 +4,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./sign-in.module.scss";
 import { signInSchema } from "../../constants/signInValidation";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { useNavigate } from "react-router-dom";
-import { APP_ROUTES } from "../../constants/constants";
+import { Status } from "../../constants/constants";
 import { useAuth } from "../../auth/useAuth";
+import MessageSnackbar from "../../components/MessageSnakbar/MessageSnackbar";
+import { useRedirect } from "../../auth/useRedirect";
 
 interface ISignInData {
   email: string;
@@ -20,8 +21,8 @@ interface ISignInData {
 export const SignInPage = () => {
   const { session } = useContext(AuthContext);
   const { status, userId } = session;
-  const navigate = useNavigate();
-  const { googleLogin, handleSignIn } = useAuth();
+
+  const { googleLogin, handleSignIn, error, clearAlert } = useAuth();
   const { language } = useAppContext();
   const {
     signIn,
@@ -29,9 +30,9 @@ export const SignInPage = () => {
     passwordMaxLength,
     passwordIsRequired,
     passwordLength,
-    passwordsDoNotMatch,
     emailIsRequired,
     emailValid,
+    passwordRequirements,
   } = lang[language as keyof typeof LANGUAGES];
   const {
     register,
@@ -45,17 +46,14 @@ export const SignInPage = () => {
         passwordMaxLength,
         passwordIsRequired,
         passwordLength,
-        passwordsDoNotMatch,
+        passwordRequirements,
         emailIsRequired,
         emailValid,
       ),
     ),
   });
-  useEffect(() => {
-    if (status === "authenticated" && userId) {
-      navigate(`/${APP_ROUTES.GRAPHIQL}`);
-    }
-  }, [status, navigate, userId]);
+
+  useRedirect("/", userId);
 
   const onSubmit = (data: ISignInData) => {
     handleSignIn({ email: data.email, password: data.password });
@@ -63,36 +61,48 @@ export const SignInPage = () => {
   };
 
   return (
-    <div className="container-auth">
-      <h2>{signIn}</h2>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          placeholder="E-mail"
-          {...register("email")}
-          variant="outlined"
-          error={Boolean(errors.email)}
-          helperText={errors.email?.message || ""}
+    status === Status.NoAuthenticated && (
+      <div className="container-auth">
+        <h2>{signIn}</h2>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <TextField
+            placeholder="E-mail"
+            {...register("email")}
+            variant="outlined"
+            error={Boolean(errors.email)}
+            helperText={errors.email?.message || ""}
+          />
+          <TextField
+            type="password"
+            placeholder={passwordPlaceholder}
+            {...register("password")}
+            variant="outlined"
+            error={Boolean(errors.password)}
+            helperText={errors.password?.message || ""}
+          />
+          <Button
+            type="submit"
+            disabled={!isValid}
+            variant="contained"
+            color="success"
+          >
+            {signIn}
+          </Button>
+          <Button
+            type="button"
+            onClick={() => googleLogin()}
+            variant="contained"
+          >
+            Google
+          </Button>
+        </form>
+        <MessageSnackbar
+          open={Boolean(error)}
+          message={error?.message ?? ""}
+          severity="error"
+          onClose={clearAlert}
         />
-        <TextField
-          type="password"
-          placeholder={passwordPlaceholder}
-          {...register("password")}
-          variant="outlined"
-          error={Boolean(errors.password)}
-          helperText={errors.password?.message || ""}
-        />
-        <Button
-          type="submit"
-          disabled={!isValid}
-          variant="contained"
-          color="success"
-        >
-          {signIn}
-        </Button>
-        <Button type="button" onClick={() => googleLogin()} variant="contained">
-          Google
-        </Button>
-      </form>
-    </div>
+      </div>
+    )
   );
 };

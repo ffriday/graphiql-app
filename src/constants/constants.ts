@@ -4,3 +4,8 @@ export const APP_ROUTES = {
   SIGNUP: "sign_up",
   GRAPHIQL: "graphiQL",
 };
+
+export enum Status {
+  NoAuthenticated = "no-authenticated",
+  Authenticated = "authenticated",
+}

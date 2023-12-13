@@ -4,7 +4,7 @@ export const signInSchema = (
   passwordMaxLength: string,
   passwordIsRequired: string,
   passwordLength: string,
-  passwordsDoNotMatch: string,
+  passwordRequirements: string,
   emailIsRequired: string,
   emailValid: string,
 ) => {
@@ -16,7 +16,7 @@ export const signInSchema = (
       .max(12, passwordMaxLength)
       .matches(
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/,
-        passwordsDoNotMatch,
+        passwordRequirements,
       ),
   });
 };
