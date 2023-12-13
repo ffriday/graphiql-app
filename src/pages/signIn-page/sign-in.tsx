@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/constants";
+import { useAuth } from "../../auth/useAuth";
 
 interface ISignInData {
   email: string;
@@ -17,15 +18,14 @@ interface ISignInData {
 }
 
 export const SignInPage = () => {
-  const { status, userId } = useContext(AuthContext);
+  const { session } = useContext(AuthContext);
+  const { status, userId } = session;
   const navigate = useNavigate();
-  const { handleLoginWithGoogle, handleLoginWithCredentials } =
-    useContext(AuthContext);
+  const { googleLogin, handleSignIn } = useAuth();
   const { language } = useAppContext();
   const {
     signIn,
     passwordPlaceholder,
-    signInSuccess,
     passwordMaxLength,
     passwordIsRequired,
     passwordLength,
@@ -58,7 +58,7 @@ export const SignInPage = () => {
   }, [status, navigate, userId]);
 
   const onSubmit = (data: ISignInData) => {
-    handleLoginWithCredentials(data.password, data.email, signInSuccess);
+    handleSignIn({ email: data.email, password: data.password });
     reset();
   };
 
@@ -89,11 +89,7 @@ export const SignInPage = () => {
         >
           {signIn}
         </Button>
-        <Button
-          type="button"
-          onClick={() => handleLoginWithGoogle(signInSuccess)}
-          variant="contained"
-        >
+        <Button type="button" onClick={() => googleLogin()} variant="contained">
           Google
         </Button>
       </form>

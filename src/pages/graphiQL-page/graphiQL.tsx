@@ -9,7 +9,8 @@ import { SignInPage } from "../signIn-page/sign-in";
 export const GraphiQLPage = () => {
   const navigate = useNavigate();
   const { language } = useAppContext();
-  const { status, userId } = useContext(AuthContext);
+  const { session } = useContext(AuthContext);
+  const { status, userId } = session;
   const GraphiQLMessage =
     language === "ru"
       ? "Здесь будет всё самое интересное"

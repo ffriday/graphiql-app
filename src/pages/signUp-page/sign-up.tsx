@@ -4,10 +4,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./sign-up.module.scss";
 import { signUpSchema } from "../../constants/signUpValidation";
-import { AuthContext } from "../../provisers/AuthProviders";
-import { useContext } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import { useAuth } from "../../auth/useAuth";
 
 interface ISignUpData {
   email: string;
@@ -15,13 +14,13 @@ interface ISignUpData {
   anotherPassword: string;
 }
 export const SignUpPage = () => {
-  const { handleRegisterWithCredentials } = useContext(AuthContext);
+  const { handleSignUp } = useAuth();
+
   const { language } = useAppContext();
   const {
     signUp,
     passwordPlaceholder,
     anotherPasswordPlacehoder,
-    signUpSuccess,
     passwordMaxLength,
     passwordIsRequired,
     passwordLength,
@@ -49,7 +48,7 @@ export const SignUpPage = () => {
   });
 
   const onSubmit = (data: ISignUpData) => {
-    handleRegisterWithCredentials(data.password, data.email, signUpSuccess);
+    handleSignUp({ email: data.email, password: data.password });
     reset();
   };
 

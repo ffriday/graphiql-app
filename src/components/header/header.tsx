@@ -7,13 +7,15 @@ import { LANGUAGES, lang } from "../../constants/lang";
 import { useContext } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
 import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../../auth/useAuth";
 
 export const Header = () => {
-  const { status, userId } = useContext(AuthContext);
+  const { session } = useContext(AuthContext);
+  const { userId, status } = session;
+  const { handleLogOut } = useAuth();
   const { language } = useAppContext();
   const { signOut, signIn, signUp, welcome, logOutSuccess } =
     lang[language as keyof typeof LANGUAGES];
-  const { handleLogOut } = useContext(AuthContext);
 
   const handlerClickLogOut = () => {
     if (status === "authenticated" && userId) {
