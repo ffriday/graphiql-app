@@ -4,11 +4,14 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { AppContextProvider } from "./provisers/LangProvider";
 import { router } from "./router";
+import { QueryProvider } from "./providers/queryProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AppContextProvider>
-      <RouterProvider router={router} />
+      <QueryProvider>
+        <RouterProvider router={router} />
+      </QueryProvider>
     </AppContextProvider>
   </React.StrictMode>,
 );
