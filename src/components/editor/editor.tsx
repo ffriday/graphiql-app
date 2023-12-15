@@ -21,6 +21,12 @@ export const Editor = () => {
   );
 
   return (
-    <CodeMirror value={value} width="100%" height="100%" onChange={onChange} />
+    <CodeMirror
+      className="editor"
+      value={value}
+      width="100%"
+      height="100%"
+      onChange={onChange}
+    />
   );
 };
