@@ -16,14 +16,22 @@ const formatCode = (code: string, tabulation: number = 2) => {
     let tab = " ".repeat(level * tabulation);
     let line = code.substring(0, position).trim();
 
-    if (!isOpen) {
+    if (isOpen) {
+      line = line
+        .split(" ")
+        .filter((word) => word.length > 0)
+        .map((word) => word.trim())
+        .join(" ");
+      line = line.replaceAll("( ", "(");
+      line = line.replaceAll(" )", ")");
+    } else {
       if (line.length > 1) {
         line = `${line
           .split("\n")
           .map((line) => line.trim())
-          .join(`\n${tab}`)}\n${tab.substring(2)}`;
+          .join(`\n${tab}`)}\n${tab.substring(tabulation)}`;
       } else {
-        tab = tab.substring(2);
+        tab = tab.substring(tabulation);
       }
     }
 

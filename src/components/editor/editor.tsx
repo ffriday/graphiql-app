@@ -13,9 +13,8 @@ export const Editor = () => {
 
   const onChange = useCallback(
     (value: string) => {
-      const val = value ?? "";
-      const { isValid } = parseCode(val);
-      updateData({ query: { value: val, isValid } });
+      const { isValid } = parseCode(value);
+      updateData({ query: { value, isValid } });
     },
     [updateData],
   );
