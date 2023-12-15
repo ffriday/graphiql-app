@@ -1,19 +1,19 @@
 import { createContext, useContext, useState } from "react";
 import { LANGUAGES } from "./constants";
 
-type AppContextType = {
+type LangContextType = {
   language: LANGUAGES;
   setLanguage: (language: LANGUAGES) => void;
 };
 
-export const AppContext = createContext<AppContextType>({
+export const LangContext = createContext<LangContextType>({
   language: LANGUAGES.EN,
   setLanguage: () => {},
 });
 
-export const useAppContext = () => useContext(AppContext);
+export const useLangContext = () => useContext(LangContext);
 
-export const AppContextProvider = ({
+export const LangContextProvider = ({
   children,
 }: {
   children: React.ReactNode;
@@ -21,8 +21,8 @@ export const AppContextProvider = ({
   const [language, setLanguage] = useState(LANGUAGES.EN);
 
   return (
-    <AppContext.Provider value={{ language, setLanguage }}>
+    <LangContext.Provider value={{ language, setLanguage }}>
       {children}
-    </AppContext.Provider>
+    </LangContext.Provider>
   );
 };

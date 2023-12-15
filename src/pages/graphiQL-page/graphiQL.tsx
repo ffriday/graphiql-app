@@ -1,9 +1,9 @@
-import { useAppContext } from "../../providers/LangProvider";
+import { useLangContext } from "../../providers/LangProvider";
 import { LANGUAGES, lang } from "../../providers/constants";
 import "./graphiQL.css";
 
 export const GraphiQLPage = () => {
-  const { language } = useAppContext();
+  const { language } = useLangContext();
   const { graphiQLMessage } = lang[language as LANGUAGES];
   return (
     <>

@@ -1,8 +1,8 @@
 import { LANGUAGES } from "../providers/constants";
-import { useAppContext } from "../providers/LangProvider";
+import { useLangContext } from "../providers/LangProvider";
 
 export const LanguageSelector = () => {
-  const { language, setLanguage } = useAppContext();
+  const { language, setLanguage } = useLangContext();
 
   const handleLanguageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,

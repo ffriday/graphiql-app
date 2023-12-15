@@ -1,8 +1,8 @@
 import { LANGUAGES, lang } from "../../providers/constants";
-import { useAppContext } from "../../providers/LangProvider";
+import { useLangContext } from "../../providers/LangProvider";
 
 export const SignInPage = () => {
-  const { language } = useAppContext();
+  const { language } = useLangContext();
   const { signIn } = lang[language as LANGUAGES];
   return (
     <>
