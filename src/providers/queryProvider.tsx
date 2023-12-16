@@ -6,7 +6,8 @@ export type TQuery = {
   isValid: boolean;
 };
 
-type TQueryData = {
+export type TQueryData = {
+  endpoint: string;
   query: TQuery;
   variables: string;
   headers: string;

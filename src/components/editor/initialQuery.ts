@@ -1,3 +1,5 @@
+import { TQueryData } from "../../providers/queryProvider";
+
 const initialQuery = `
 # Welcome to GraphiQL
 #
@@ -22,7 +24,8 @@ query test (id: Int) {
 #end
 `;
 
-export const initialQueryContext = {
+export const initialQueryContext: TQueryData = {
+  endpoint: "https://swapi-graphql.netlify.app/.netlify/functions/index",
   query: { value: initialQuery, isValid: true },
   variables: "",
   headers: "",
