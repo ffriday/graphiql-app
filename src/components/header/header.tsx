@@ -1,14 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
-import { useLangContext } from "../../providers/LangProvider";
+import { useTranslate } from "../../providers/TranslateProvider";
 import "./Header.css";
-import { LANGUAGES, lang } from "../../providers/constants";
 
 export const Header = () => {
-  const { language } = useLangContext();
-  const { signOut, signIn, signUp, welcome } =
-    lang[language as keyof typeof LANGUAGES];
+  const translate = useTranslate();
+  const welcome = translate("welcome");
+  const signIn = translate("signIn");
+  const signUp = translate("signUp");
+  const signOut = translate("signOut");
 
   return (
     <div className="header">

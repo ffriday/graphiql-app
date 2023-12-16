@@ -1,9 +1,8 @@
-import { LANGUAGES, lang } from "../../providers/constants";
-import { useLangContext } from "../../providers/LangProvider";
+import { useTranslate } from "../../providers/TranslateProvider";
 
 export const WelcomePage = () => {
-  const { language } = useLangContext();
-  const { welcomeMessage } = lang[language as LANGUAGES];
+  const translate = useTranslate();
+  const welcomeMessage = translate("welcomeMessage");
   return (
     <>
       <h1>{welcomeMessage}</h1>

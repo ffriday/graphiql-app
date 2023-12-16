@@ -1,8 +1,7 @@
-import { LANGUAGES, lang } from "../../providers/constants";
-import { useLangContext } from "../../providers/LangProvider";
+import { useTranslate } from "../../providers/TranslateProvider";
 
 export const ErrorPage = () => {
-  const { language } = useLangContext();
-  const { errorMessage } = lang[language as LANGUAGES];
+  const translate = useTranslate();
+  const errorMessage = translate("errorMessage");
   return <h1>{errorMessage}</h1>;
 };

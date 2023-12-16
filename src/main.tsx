@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
-import { LangContextProvider } from "./providers/LangProvider";
+import { TranslateContextProvider } from "./providers/TranslateProvider";
 import { router } from "./router";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <LangContextProvider>
+    <TranslateContextProvider>
       <RouterProvider router={router} />
-    </LangContextProvider>
+    </TranslateContextProvider>
   </React.StrictMode>,
 );

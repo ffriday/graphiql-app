@@ -1,20 +1,22 @@
+import { useContext, useState } from "react";
 import { LANGUAGES } from "../providers/constants";
-import { useLangContext } from "../providers/LangProvider";
+import { TranslateContext } from "../providers/TranslateProvider";
 
 export const LanguageSelector = () => {
-  const { language, setLanguage } = useLangContext();
-
+  const { setLanguage } = useContext(TranslateContext);
+  const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGES.EN);
   const handleLanguageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    const selectedLanguage = event.target.value as LANGUAGES;
-    setLanguage(selectedLanguage);
+    const newLanguage = event.target.value as LANGUAGES;
+    setSelectedLanguage(newLanguage);
+    setLanguage(newLanguage);
   };
 
   return (
     <select
       className="lang-select"
-      value={language}
+      value={selectedLanguage}
       onChange={handleLanguageChange}
     >
       <option value={LANGUAGES.EN}>English</option>

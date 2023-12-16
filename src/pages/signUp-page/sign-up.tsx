@@ -1,9 +1,8 @@
-import { LANGUAGES, lang } from "../../providers/constants";
-import { useLangContext } from "../../providers/LangProvider";
+import { useTranslate } from "../../providers/TranslateProvider";
 
 export const SignUpPage = () => {
-  const { language } = useLangContext();
-  const { signUp } = lang[language as LANGUAGES];
+  const translate = useTranslate();
+  const signUp = translate("signUp");
   return (
     <>
       <h1>{signUp}</h1>
