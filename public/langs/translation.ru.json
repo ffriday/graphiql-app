@@ -1,0 +1,21 @@
+{
+  "welcome-page": {
+    "welcomeMessage": "Добро пожаловать в приложение",
+    "welcome": "Стартовая страница"
+  },
+  "header": {
+    "signOut": "Выйти"
+  },
+  "signIn-page": {
+    "signIn": "Вход"
+  },
+  "signUp-page": {
+    "signUp": "Регистрация"
+  },
+  "graphiQL-page": {
+    "graphiQLMessage": "Здесь будет всё самое интересное"
+  },
+  "shared": {
+    "errorMessage": "Ошибка 404. Такая страница не найдена"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "welcome-page": {
+    "welcomeMessage": "Welcome to the app",
+    "welcome": "Welcome"
+  },
+  "header": {
+    "signOut": "Sign out"
+  },
+  "signIn-page": {
+    "signIn": "Sign in"
+  },
+  "signUp-page": {
+    "signUp": "Sign up"
+  },
+  "graphiQL-page": {
+    "graphiQLMessage": "All the most interesting things will be here"
+  },
+  "shared": {
+    "errorMessage": "Error 404. Page not found"
+  }
+}
