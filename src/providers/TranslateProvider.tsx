@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { LANGUAGES, lang } from "./constants";
 
-type TranslationFunction = (key: string) => string;
+export type TranslationFunction = (key: string) => string;
 
-type TranslateContextType = {
+export type TranslateContextType = {
   translate: TranslationFunction;
   setLanguage: (language: LANGUAGES) => void;
 };
@@ -12,11 +12,6 @@ export const TranslateContext = createContext<TranslateContextType>({
   translate: (key: string) => key,
   setLanguage: () => {},
 });
-
-export const useTranslate = (): TranslationFunction => {
-  const { translate } = useContext(TranslateContext);
-  return translate;
-};
 
 export const TranslateContextProvider = ({
   children,

@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
-import { useTranslate } from "../../providers/TranslateProvider";
 import "./Header.css";
+import { useTranslate } from "../../hooks/useTranslate";
 
 export const Header = () => {
   const translate = useTranslate();

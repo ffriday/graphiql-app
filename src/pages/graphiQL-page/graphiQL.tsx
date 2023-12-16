@@ -1,4 +1,4 @@
-import { useTranslate } from "../../providers/TranslateProvider";
+import { useTranslate } from "../../hooks/useTranslate";
 import "./graphiQL.css";
 
 export const GraphiQLPage = () => {
