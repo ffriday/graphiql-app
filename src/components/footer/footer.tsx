@@ -1,6 +1,6 @@
 import logo from "../../assets/rs-react-logo.png";
 import github from "../../assets/github.png";
-import "./footer.css";
+import "./Footer.css";
 
 export const Footer = () => {
   return (
