@@ -11,6 +11,7 @@ export const lang = {
     signUp: "Sign up",
     errorMessage: "Error 404. Page not found",
     welcomeMessage: "Welcome to the app",
+    graphiQLMessage: "All the most interesting things will be here",
   },
   [LANGUAGES.RU]: {
     signOut: "Выйти",
@@ -19,5 +20,6 @@ export const lang = {
     signUp: "Регистрация",
     errorMessage: "Ошибка 404. Такая страница не найдена",
     welcomeMessage: "Добро пожаловать в приложение",
+    graphiQLMessage: "Все самое интересное будет происходить здесь",
   },
 };
