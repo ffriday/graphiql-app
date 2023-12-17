@@ -3,18 +3,19 @@ import github from "../../assets/github.png";
 import "./Footer.css";
 
 export const Footer = () => {
+  const profileLinks = [
+    "https://github.com/ffriday",
+    "https://github.com/krkate",
+    "https://github.com/romankadevich",
+  ];
   return (
     <div className="footer">
       <div className="authors">
-        <a href="https://github.com/ffriday">
-          <img className="github-logo" src={github}></img>
-        </a>
-        <a href="https://github.com/krkate">
-          <img className="github-logo" src={github}></img>
-        </a>
-        <a href="https://github.com/romankadevich">
-          <img className="github-logo" src={github}></img>
-        </a>
+        {profileLinks.map((link, index) => (
+          <a key={index} href={link}>
+            <img className="github-logo" src={github} alt="GitHub Logo"></img>
+          </a>
+        ))}
       </div>
       <p>2023-2024</p>
       <a href="https://rs.school/react/">
