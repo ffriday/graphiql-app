@@ -19,7 +19,7 @@ export const signUpSchema = (
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/,
         passwordRequirements,
       ),
-    anotherPassword: string()
+    passwordConfirmation: string()
       .required(passwordIsRequired)
       .min(8, passwordLength)
       .max(12, passwordMaxLength)

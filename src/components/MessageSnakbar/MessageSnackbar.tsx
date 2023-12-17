@@ -1,30 +1,41 @@
 import { Alert, AlertColor, Snackbar } from "@mui/material";
+import { useEffect, useState } from "react";
 
-interface IMessageSnackbar {
-  open: boolean;
+type IMessageSnackbar = {
+  isOpen: boolean;
   message: string;
-  severity: AlertColor | undefined;
-  onClose: () => void;
-}
+  severity?: AlertColor;
+  autoHideDuration?: number;
+};
 
 const MessageSnackbar = ({
-  open,
+  isOpen,
   message,
   severity,
-  onClose,
+  autoHideDuration = 2000,
 }: IMessageSnackbar) => {
+  const [open, setOpen] = useState(isOpen);
+
+  useEffect(() => {
+    setOpen(isOpen);
+  }, [isOpen]);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Snackbar
       open={open}
-      autoHideDuration={2000}
-      onClose={onClose}
+      autoHideDuration={autoHideDuration}
+      onClose={handleClose}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
     >
       <Alert
         elevation={6}
         variant="filled"
         severity={severity}
-        onClose={onClose}
+        onClose={handleClose}
       >
         {message}
       </Alert>

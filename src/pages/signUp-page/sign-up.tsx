@@ -8,20 +8,15 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "../../auth/useAuth";
 import { useContext } from "react";
-import { Status } from "../../constants/constants";
 import { AuthContext } from "../../provisers/AuthProviders";
 import MessageSnackbar from "../../components/MessageSnakbar/MessageSnackbar";
 import { useRedirect } from "../../auth/useRedirect";
+import { SignUpCredentials } from "../../constants/types";
 
-interface ISignUpData {
-  email: string;
-  password: string;
-  anotherPassword: string;
-}
 export const SignUpPage = () => {
   const { session } = useContext(AuthContext);
-  const { status, userId } = session;
-  const { handleSignUp, error, clearAlert } = useAuth();
+  const { userId } = session;
+  const { handleSignUp, error, isError } = useAuth();
   const { language } = useAppContext();
   const {
     signUp,
@@ -41,7 +36,7 @@ export const SignUpPage = () => {
     handleSubmit,
     reset,
   } = useForm({
-    mode: "onChange",
+    mode: "onBlur",
     resolver: yupResolver(
       signUpSchema(
         passwordMaxLength,
@@ -57,13 +52,13 @@ export const SignUpPage = () => {
 
   useRedirect("/", userId);
 
-  const onSubmit = (data: ISignUpData) => {
+  const onSubmit = (data: SignUpCredentials) => {
     handleSignUp({ email: data.email, password: data.password });
     reset();
   };
 
   return (
-    status === Status.NoAuthenticated && (
+    !userId && (
       <div className="container-auth">
         <h2>{signUp}</h2>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -85,10 +80,10 @@ export const SignUpPage = () => {
           <TextField
             type="password"
             placeholder={anotherPasswordPlacehoder}
-            {...register("anotherPassword")}
+            {...register("passwordConfirmation")}
             variant="outlined"
-            error={!!errors.anotherPassword}
-            helperText={errors.anotherPassword?.message || ""}
+            error={!!errors.passwordConfirmation}
+            helperText={errors.passwordConfirmation?.message || ""}
           />
           <div>
             <Button
@@ -102,10 +97,9 @@ export const SignUpPage = () => {
           </div>
         </form>
         <MessageSnackbar
-          open={Boolean(error)}
+          isOpen={isError}
           message={error?.message ?? ""}
           severity="error"
-          onClose={clearAlert}
         />
       </div>
     )

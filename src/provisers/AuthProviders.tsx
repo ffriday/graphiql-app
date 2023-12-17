@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
+import { AuthState } from "../constants/types";
 
 export interface IAuthContext {
   session: AuthState;
@@ -7,19 +8,9 @@ export interface IAuthContext {
 
 export const AuthContext = createContext({} as IAuthContext);
 
-interface IElement {
-  children: JSX.Element | JSX.Element[];
-}
-
-type AuthState = {
-  userId: string | null;
-  status: "no-authenticated" | "authenticated" | "checking";
-};
-
-export const AuthProvider = ({ children }: IElement) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const initialState: AuthState = {
     userId: null,
-    status: "no-authenticated",
   };
   const [session, setSession] = useState(initialState);
 

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { APP_ROUTES, Status } from "../../constants/constants";
+import { APP_ROUTES } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
 import { useAppContext } from "../../provisers/LangProvider";
 import "./header.css";
@@ -11,7 +11,7 @@ import MessageSnackbar from "../MessageSnakbar/MessageSnackbar";
 
 export const Header = () => {
   const { session } = useContext(AuthContext);
-  const { userId, status } = session;
+  const { userId } = session;
   const { handleLogOut } = useAuth();
   const { language } = useAppContext();
   const { signOut, signIn, signUp, welcome, logOutSuccess } =
@@ -19,31 +19,30 @@ export const Header = () => {
   const [isSignOut, setIsSignOut] = useState(false);
 
   const handlerClickLogOut = () => {
-    if (status === Status.Authenticated && userId) {
+    if (userId) {
       handleLogOut();
       setIsSignOut(true);
     }
-  };
-
-  const onCloseAlert = () => {
-    setIsSignOut(false);
   };
 
   return (
     <div className="header">
       <nav className="navigation">
         <NavLink to={APP_ROUTES.WELCOME}>{welcome}</NavLink>
-        <NavLink to={APP_ROUTES.SIGNIN}>{signIn}</NavLink>
-        <NavLink to={APP_ROUTES.SIGNUP}>{signUp}</NavLink>
+        {!userId && (
+          <>
+            <NavLink to={APP_ROUTES.SIGNIN}>{signIn}</NavLink>
+            <NavLink to={APP_ROUTES.SIGNUP}>{signUp}</NavLink>
+          </>
+        )}
         <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
       </nav>
-      <button onClick={handlerClickLogOut}>{signOut}</button>
+      {userId && <button onClick={handlerClickLogOut}>{signOut}</button>}
       <LanguageSelector />
       <MessageSnackbar
-        open={isSignOut}
+        isOpen={isSignOut}
         message={logOutSuccess}
         severity="success"
-        onClose={onCloseAlert}
       />
     </div>
   );

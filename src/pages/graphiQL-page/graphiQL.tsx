@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { useAppContext } from "../../provisers/LangProvider";
 import "./graphiQL.css";
 import { AuthContext } from "../../provisers/AuthProviders";
-import { APP_ROUTES, Status } from "../../constants/constants";
+import { APP_ROUTES } from "../../constants/constants";
 import { SignInPage } from "../signIn-page/sign-in";
 import { useRedirect } from "../../auth/useRedirect";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
   const { session } = useContext(AuthContext);
-  const { status, userId } = session;
+  const { userId } = session;
   const GraphiQLMessage =
     language === "ru"
       ? "Здесь будет всё самое интересное"
@@ -17,7 +17,7 @@ export const GraphiQLPage = () => {
 
   useRedirect(`/${APP_ROUTES.SIGNIN}`, null);
 
-  return status === Status.Authenticated && userId ? (
+  return userId ? (
     <>
       <h1>GraphiQL</h1>
       <p>{GraphiQLMessage}</p>

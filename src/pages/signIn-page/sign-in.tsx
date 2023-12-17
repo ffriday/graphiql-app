@@ -8,21 +8,16 @@ import { useContext } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { Status } from "../../constants/constants";
 import { useAuth } from "../../auth/useAuth";
 import MessageSnackbar from "../../components/MessageSnakbar/MessageSnackbar";
 import { useRedirect } from "../../auth/useRedirect";
-
-interface ISignInData {
-  email: string;
-  password: string;
-}
+import { Credentials } from "../../constants/types";
 
 export const SignInPage = () => {
   const { session } = useContext(AuthContext);
-  const { status, userId } = session;
+  const { userId } = session;
 
-  const { googleLogin, handleSignIn, error, clearAlert } = useAuth();
+  const { googleLogin, handleSignIn, error, isError } = useAuth();
   const { language } = useAppContext();
   const {
     signIn,
@@ -40,7 +35,7 @@ export const SignInPage = () => {
     handleSubmit,
     reset,
   } = useForm({
-    mode: "onChange",
+    mode: "onBlur",
     resolver: yupResolver(
       signInSchema(
         passwordMaxLength,
@@ -52,16 +47,15 @@ export const SignInPage = () => {
       ),
     ),
   });
-
   useRedirect("/", userId);
 
-  const onSubmit = (data: ISignInData) => {
+  const onSubmit = (data: Credentials) => {
     handleSignIn({ email: data.email, password: data.password });
     reset();
   };
 
   return (
-    status === Status.NoAuthenticated && (
+    !userId && (
       <div className="container-auth">
         <h2>{signIn}</h2>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -97,10 +91,9 @@ export const SignInPage = () => {
           </Button>
         </form>
         <MessageSnackbar
-          open={Boolean(error)}
+          isOpen={isError}
           message={error?.message ?? ""}
           severity="error"
-          onClose={clearAlert}
         />
       </div>
     )
