@@ -1,5 +1,5 @@
 import { LANGUAGES, lang } from "../../constants/lang";
-import { useAppContext } from "../../provisers/LangProvider";
+import { useAppContext } from "../../providers/LangProvider";
 
 export const WelcomePage = () => {
   const { language } = useAppContext();
