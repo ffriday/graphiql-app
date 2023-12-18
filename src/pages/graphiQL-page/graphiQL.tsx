@@ -1,6 +1,6 @@
 import { LANGUAGES, lang } from "../../constants/lang";
 import { useAppContext } from "../../providers/LangProvider";
-import "./graphiQL.css";
+import "./GraphiQL.css";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
