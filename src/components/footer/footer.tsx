@@ -1,13 +1,13 @@
 import logo from "../../assets/rs-react-logo.png";
 import "./Footer.css";
-import { profileLinks } from "../../constants/constants";
+import { ProfileLinks } from "../../constants/constants";
 import GitHubLink from "../GitHubLink";
 
 export const Footer = () => {
   return (
     <div className="footer">
       <div className="authors">
-        {profileLinks.map((link, index) => (
+        {ProfileLinks.map((link, index) => (
           <GitHubLink key={index} link={link} />
         ))}
       </div>
