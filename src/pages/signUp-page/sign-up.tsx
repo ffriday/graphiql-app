@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import { useAuth } from "../../auth/useAuth";
 import { useContext } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
-import MessageSnackbar from "../../components/MessageSnakbar/MessageSnackbar";
+import MessageSnackbar from "../../components/MessageSnaсkbar/MessageSnackbar";
 import { useRedirect } from "../../hooks/useRedirect";
 import { SignUpCredentials } from "../../auth/types";
 

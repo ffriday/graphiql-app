@@ -9,7 +9,7 @@ import { AuthContext } from "../../provisers/AuthProviders";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "../../auth/useAuth";
-import MessageSnackbar from "../../components/MessageSnakbar/MessageSnackbar";
+import MessageSnackbar from "../../components/MessageSnaсkbar/MessageSnackbar";
 import { useRedirect } from "../../hooks/useRedirect";
 import { Credentials } from "../../auth/types";
 

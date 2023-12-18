@@ -1,16 +1,15 @@
 import { ReactNode, createContext, useState } from "react";
-import { AuthState } from "../auth/types";
 
-export interface IAuthContext {
-  userId: AuthState;
-  setUserId: (value: AuthState) => void;
-}
+export type AuthContextType = {
+  userId: string | null;
+  setUserId: (value: string | null) => void;
+};
 
-export const AuthContext = createContext({} as IAuthContext);
+export const AuthContext = createContext({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const initialState: AuthState = null;
-  const [userId, setUserId] = useState<AuthState>(initialState);
+  const initialState = null;
+  const [userId, setUserId] = useState<string | null>(initialState);
 
   return (
     <AuthContext.Provider

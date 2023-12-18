@@ -7,7 +7,7 @@ import { LANGUAGES, lang } from "../../constants/lang";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
 import { useAuth } from "../../auth/useAuth";
-import MessageSnackbar from "../MessageSnakbar/MessageSnackbar";
+import MessageSnackbar from "../MessageSnaсkbar/MessageSnackbar";
 
 export const Header = () => {
   const { userId } = useContext(AuthContext);

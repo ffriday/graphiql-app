@@ -15,5 +15,3 @@ export type AuthResource = {
   isError: boolean;
   error: Error | null;
 };
-
-export type AuthState = string | null;
