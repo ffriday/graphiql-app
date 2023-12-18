@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { APP_ROUTES } from "../../constants/constants";
+import { APP_ROUTES } from "../Footer/constants";
 import { LanguageSelector } from "../LanguageSelector";
 import { useAppContext } from "../../providers/LangProvider";
 import "./Header.css";

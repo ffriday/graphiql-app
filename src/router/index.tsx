@@ -7,7 +7,7 @@ import { SignUpPage } from "../pages/signUp-page/sign-up";
 import { ErrorPage } from "../pages/error-page/error";
 import { SignInPage } from "../pages/signIn-page/sign-in";
 import { WelcomePage } from "../pages/welcome-page/welcome";
-import { APP_ROUTES } from "../constants/constants";
+import { APP_ROUTES } from "../components/Footer/constants";
 import { RootLayout } from "../layouts/root-layout";
 import { GraphiQLPage } from "../pages/graphiQL-page/graphiQL";
 

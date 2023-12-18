@@ -1,6 +1,6 @@
 import logo from "../../assets/rs-react-logo.png";
 import "./Footer.css";
-import { ProfileLinks } from "../../constants/constants";
+import { ProfileLinks } from "./constants";
 import GitHubLink from "../GitHubLink";
 
 export const Footer = () => {
