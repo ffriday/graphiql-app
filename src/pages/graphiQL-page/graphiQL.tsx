@@ -4,12 +4,11 @@ import "./graphiQL.css";
 import { AuthContext } from "../../provisers/AuthProviders";
 import { APP_ROUTES } from "../../constants/constants";
 import { SignInPage } from "../signIn-page/sign-in";
-import { useRedirect } from "../../auth/useRedirect";
+import { useRedirect } from "../../hooks/useRedirect";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
-  const { session } = useContext(AuthContext);
-  const { userId } = session;
+  const { userId } = useContext(AuthContext);
   const GraphiQLMessage =
     language === "ru"
       ? "Здесь будет всё самое интересное"

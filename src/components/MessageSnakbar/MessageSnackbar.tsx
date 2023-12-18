@@ -1,7 +1,7 @@
 import { Alert, AlertColor, Snackbar } from "@mui/material";
 import { useEffect, useState } from "react";
 
-type IMessageSnackbar = {
+type MessageSnackbarProps = {
   isOpen: boolean;
   message: string;
   severity?: AlertColor;
@@ -13,7 +13,7 @@ const MessageSnackbar = ({
   message,
   severity,
   autoHideDuration = 2000,
-}: IMessageSnackbar) => {
+}: MessageSnackbarProps) => {
   const [open, setOpen] = useState(isOpen);
 
   useEffect(() => {

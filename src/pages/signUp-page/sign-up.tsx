@@ -10,12 +10,11 @@ import { useAuth } from "../../auth/useAuth";
 import { useContext } from "react";
 import { AuthContext } from "../../provisers/AuthProviders";
 import MessageSnackbar from "../../components/MessageSnakbar/MessageSnackbar";
-import { useRedirect } from "../../auth/useRedirect";
-import { SignUpCredentials } from "../../constants/types";
+import { useRedirect } from "../../hooks/useRedirect";
+import { SignUpCredentials } from "../../auth/types";
 
 export const SignUpPage = () => {
-  const { session } = useContext(AuthContext);
-  const { userId } = session;
+  const { userId } = useContext(AuthContext);
   const { handleSignUp, error, isError } = useAuth();
   const { language } = useAppContext();
   const {
@@ -52,8 +51,8 @@ export const SignUpPage = () => {
 
   useRedirect("/", userId);
 
-  const onSubmit = (data: SignUpCredentials) => {
-    handleSignUp({ email: data.email, password: data.password });
+  const onSubmit = ({ email, password }: SignUpCredentials) => {
+    handleSignUp({ email, password });
     reset();
   };
 
@@ -67,7 +66,7 @@ export const SignUpPage = () => {
             {...register("email")}
             variant="outlined"
             error={Boolean(errors.email)}
-            helperText={errors.email?.message || ""}
+            helperText={errors.email?.message ?? ""}
           />
           <TextField
             type="password"
@@ -75,7 +74,7 @@ export const SignUpPage = () => {
             {...register("password")}
             variant="outlined"
             error={Boolean(errors.password)}
-            helperText={errors.password?.message || ""}
+            helperText={errors.password?.message ?? ""}
           />
           <TextField
             type="password"
@@ -83,7 +82,7 @@ export const SignUpPage = () => {
             {...register("passwordConfirmation")}
             variant="outlined"
             error={!!errors.passwordConfirmation}
-            helperText={errors.passwordConfirmation?.message || ""}
+            helperText={errors.passwordConfirmation?.message ?? ""}
           />
           <div>
             <Button

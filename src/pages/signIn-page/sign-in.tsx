@@ -10,12 +10,11 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "../../auth/useAuth";
 import MessageSnackbar from "../../components/MessageSnakbar/MessageSnackbar";
-import { useRedirect } from "../../auth/useRedirect";
-import { Credentials } from "../../constants/types";
+import { useRedirect } from "../../hooks/useRedirect";
+import { Credentials } from "../../auth/types";
 
 export const SignInPage = () => {
-  const { session } = useContext(AuthContext);
-  const { userId } = session;
+  const { userId } = useContext(AuthContext);
 
   const { googleLogin, handleSignIn, error, isError } = useAuth();
   const { language } = useAppContext();
@@ -49,8 +48,8 @@ export const SignInPage = () => {
   });
   useRedirect("/", userId);
 
-  const onSubmit = (data: Credentials) => {
-    handleSignIn({ email: data.email, password: data.password });
+  const onSubmit = ({ email, password }: Credentials) => {
+    handleSignIn({ email, password });
     reset();
   };
 
@@ -64,7 +63,7 @@ export const SignInPage = () => {
             {...register("email")}
             variant="outlined"
             error={Boolean(errors.email)}
-            helperText={errors.email?.message || ""}
+            helperText={errors.email?.message ?? ""}
           />
           <TextField
             type="password"
@@ -72,7 +71,7 @@ export const SignInPage = () => {
             {...register("password")}
             variant="outlined"
             error={Boolean(errors.password)}
-            helperText={errors.password?.message || ""}
+            helperText={errors.password?.message ?? ""}
           />
           <Button
             type="submit"

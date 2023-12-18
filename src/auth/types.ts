@@ -16,6 +16,4 @@ export type AuthResource = {
   error: Error | null;
 };
 
-export type AuthState = {
-  userId: string | null;
-};
+export type AuthState = string | null;

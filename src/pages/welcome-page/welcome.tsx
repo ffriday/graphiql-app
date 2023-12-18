@@ -8,9 +8,8 @@ import { APP_ROUTES } from "../../constants/constants";
 export const WelcomePage = () => {
   const { language } = useAppContext();
   const { welcomeMessage } = lang[language as keyof typeof LANGUAGES];
-  const { session } = useContext(AuthContext);
+  const { userId } = useContext(AuthContext);
   const { signIn, signUp } = lang[language as keyof typeof LANGUAGES];
-  const { userId } = session;
   return (
     <>
       <h1>{welcomeMessage}</h1>

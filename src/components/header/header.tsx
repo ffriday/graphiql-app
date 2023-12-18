@@ -10,8 +10,7 @@ import { useAuth } from "../../auth/useAuth";
 import MessageSnackbar from "../MessageSnakbar/MessageSnackbar";
 
 export const Header = () => {
-  const { session } = useContext(AuthContext);
-  const { userId } = session;
+  const { userId } = useContext(AuthContext);
   const { handleLogOut } = useAuth();
   const { language } = useAppContext();
   const { signOut, signIn, signUp, welcome, logOutSuccess } =
