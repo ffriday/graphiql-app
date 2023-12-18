@@ -25,7 +25,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="header">
+    <header className="header">
       <nav className="navigation">
         <NavLink to={APP_ROUTES.WELCOME}>{welcome}</NavLink>
         {!userId && (
@@ -43,6 +43,6 @@ export const Header = () => {
         message={logOutSuccess}
         severity="success"
       />
-    </div>
+    </header>
   );
 };

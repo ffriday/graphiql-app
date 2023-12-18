@@ -13,7 +13,7 @@ export const WelcomePage = () => {
   return (
     <>
       <h1>{welcomeMessage}</h1>
-      <p>
+      <div>
         <nav className="navigation">
           {!userId ? (
             <>
@@ -24,7 +24,7 @@ export const WelcomePage = () => {
             <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
           )}
         </nav>
-      </p>
+      </div>
     </>
   );
 };
