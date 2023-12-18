@@ -8,8 +8,8 @@ import { ErrorPage } from "../pages/Error-page/Error";
 import { SignInPage } from "../pages/SignIn-page/Sign-in";
 import { WelcomePage } from "../pages/Welcome-page/Welcome";
 import { APP_ROUTES } from "../components/Footer/constants";
-import { GraphiQLPage } from "../pages/GraphiQL-page/GraphiQL";
 import { RootLayout } from "../layouts/Root-layout";
+import { GraphiQLPage } from "../pages/GraphiQL-page/GraphiQL";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
