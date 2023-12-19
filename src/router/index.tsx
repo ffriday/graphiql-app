@@ -4,7 +4,7 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
-import { APP_ROUTES } from "../components/Footer/constants";
+import { APP_ROUTES } from "../constants/constants";
 import { RootLayout } from "../layouts/RootLayout";
 import { ErrorPage } from "../pages/ErrorPage/ErrorPage";
 import { GraphiQLPage } from "../pages/GraphiQLPage/GraphiQLPage";
