@@ -3,13 +3,14 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import { SignUpPage } from "../pages/signUp-page/sign-up";
-import { ErrorPage } from "../pages/error-page/error";
-import { SignInPage } from "../pages/signIn-page/sign-in";
-import { WelcomePage } from "../pages/welcome-page/welcome";
-import { APP_ROUTES } from "../constants/constants";
-import { RootLayout } from "../layouts/root-layout";
-import { GraphiQLPage } from "../pages/graphiQL-page/graphiQL";
+
+import { APP_ROUTES } from "../components/Footer/constants";
+import { RootLayout } from "../layouts/RootLayout";
+import { ErrorPage } from "../pages/ErrorPage/ErrorPage";
+import { GraphiQLPage } from "../pages/GraphiQLPage/GraphiQLPage";
+import { SignInPage } from "../pages/SignInPage/SignInPage";
+import { SignUpPage } from "../pages/SignUpPage/SignUpPage";
+import { WelcomePage } from "../pages/WelcomePage/WelcomePage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(

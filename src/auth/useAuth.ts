@@ -7,7 +7,7 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import { FirebaseAuth } from "./config";
-import { AuthContext } from "../provisers/AuthProviders";
+import { AuthContext } from "../providers/AuthProviders";
 import { useContext } from "react";
 import { AuthResource, Credentials } from "./types";
 
