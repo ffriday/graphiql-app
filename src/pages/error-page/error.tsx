@@ -1,5 +1,5 @@
 import { LANGUAGES, lang } from "../../constants/lang";
-import { useAppContext } from "../../providers/LangProvider";
+import { useAppContext } from "../../provisers/LangProvider";
 
 export const ErrorPage = () => {
   const { language } = useAppContext();
