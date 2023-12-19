@@ -4,27 +4,23 @@
   height: 100%;
   display: flex;
 }
-
 .settings {
   background-color: rgb(209, 188, 233);
   height: 100%;
   flex: 0 0 8%;
 }
-
 .session {
     height: 95%;
     flex: 1;
     padding: 0.5rem;
     display: flex;
 }
-
 .editor {
    background-color: white;
    width: 50%;
    height: 100%;
    border-radius: 15px;
 }
-
 .response {
     width: 50%;
     height: 100%;

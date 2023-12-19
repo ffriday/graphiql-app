@@ -1,5 +1,5 @@
 import { LANGUAGES } from "../constants/lang";
-import { useAppContext } from "../providers/LangProvider";
+import { useAppContext } from "../provisers/LangProvider";
 
 export const LanguageSelector = () => {
   const { language, setLanguage } = useAppContext();
