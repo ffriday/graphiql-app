@@ -2,10 +2,11 @@ import { useQueryContext } from "../../providers/queryProvider";
 import { prettify } from "../editor/prettify";
 import CleaningServicesOutlinedIcon from "@mui/icons-material/CleaningServices";
 import styles from "./Settings.module.scss";
+import { IconButton } from "@mui/material";
 
 export const Settings = () => {
   return (
-    <aside className="settings">
+    <aside className={styles.settings}>
       <PrettifyButton />
     </aside>
   );
@@ -24,12 +25,12 @@ const PrettifyButton = () => {
   };
 
   return (
-    <button
+    <IconButton
       onClick={prettifyCode}
       disabled={!isValid}
-      className={styles.button}
+      aria-aria-label="Prettify"
     >
-      <CleaningServicesOutlinedIcon style={{ color: "white" }} />
-    </button>
+      <CleaningServicesOutlinedIcon />
+    </IconButton>
   );
 };

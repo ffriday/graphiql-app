@@ -1,13 +1,5 @@
-$button-size: 40px;
-
-.button {
-  width: $button-size;
-  height: $button-size;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  svg {
-    width: $button-size * 0.75;
-    height: $button-size * 0.75;
-  }
+.settings {
+  background-color: rgb(209, 188, 233);
+  height: 100%;
+  padding: 5px;
 }
