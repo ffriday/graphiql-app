@@ -1,5 +1,6 @@
-import { TQueryData, initialEndpoint, initialQuery } from "./";
 import { createContext, useContext } from "react";
+import { parseCode } from "../../functions";
+import { TQueryData, initialEndpoint, initialQuery } from "./";
 
 type TQueryContext = {
   data: TQueryData;
@@ -8,7 +9,7 @@ type TQueryContext = {
 
 export const initialQueryContext: TQueryData = {
   endpoint: initialEndpoint,
-  query: { value: initialQuery, isValid: true },
+  query: { value: initialQuery, isValid: parseCode(initialQuery).isValid },
   variables: "",
   headers: "",
 };
