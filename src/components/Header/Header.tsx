@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
-import { useAppContext } from "../../provisers/LangProvider";
-import "./header.css";
+import { useAppContext } from "../../providers/LangProvider";
+import "./Header.css";
 import { LANGUAGES, lang } from "../../constants/lang";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../provisers/AuthProviders";
+import { AuthContext } from "../../providers/AuthProviders";
 import { useAuth } from "../../auth/useAuth";
 import MessageSnackbar from "../MessageSnaсkbar/MessageSnackbar";
 

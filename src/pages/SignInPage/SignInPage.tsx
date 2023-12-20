@@ -1,30 +1,29 @@
 import { LANGUAGES, lang } from "../../constants/lang";
-import { useAppContext } from "../../provisers/LangProvider";
+import { useAppContext } from "../../providers/LangProvider";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import styles from "./sign-up.module.scss";
-import { signUpSchema } from "../../constants/signUpValidation";
+import styles from "./sign-in.module.scss";
+import { signInSchema } from "../../constants/signInValidation";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "../../auth/useAuth";
-import { useContext } from "react";
-import { AuthContext } from "../../provisers/AuthProviders";
 import MessageSnackbar from "../../components/MessageSnaсkbar/MessageSnackbar";
 import { useRedirect } from "../../hooks/useRedirect";
-import { SignUpCredentials } from "../../auth/types";
+import { Credentials } from "../../auth/types";
 
-export const SignUpPage = () => {
+export const SignInPage = () => {
   const { userId } = useContext(AuthContext);
-  const { handleSignUp, error, isError } = useAuth();
+
+  const { googleLogin, handleSignIn, error, isError } = useAuth();
   const { language } = useAppContext();
   const {
-    signUp,
+    signIn,
     passwordPlaceholder,
-    anotherPasswordPlacehoder,
     passwordMaxLength,
     passwordIsRequired,
     passwordLength,
-    passwordsDoNotMatch,
     emailIsRequired,
     emailValid,
     passwordRequirements,
@@ -37,29 +36,27 @@ export const SignUpPage = () => {
   } = useForm({
     mode: "onBlur",
     resolver: yupResolver(
-      signUpSchema(
+      signInSchema(
         passwordMaxLength,
         passwordIsRequired,
         passwordLength,
-        passwordsDoNotMatch,
         passwordRequirements,
         emailIsRequired,
         emailValid,
       ),
     ),
   });
-
   useRedirect("/", userId);
 
-  const onSubmit = ({ email, password }: SignUpCredentials) => {
-    handleSignUp({ email, password });
+  const onSubmit = ({ email, password }: Credentials) => {
+    handleSignIn({ email, password });
     reset();
   };
 
   return (
     !userId && (
       <div className="container-auth">
-        <h2>{signUp}</h2>
+        <h2>{signIn}</h2>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <TextField
             placeholder="E-mail"
@@ -76,24 +73,21 @@ export const SignUpPage = () => {
             error={Boolean(errors.password)}
             helperText={errors.password?.message ?? ""}
           />
-          <TextField
-            type="password"
-            placeholder={anotherPasswordPlacehoder}
-            {...register("passwordConfirmation")}
-            variant="outlined"
-            error={!!errors.passwordConfirmation}
-            helperText={errors.passwordConfirmation?.message ?? ""}
-          />
-          <div>
-            <Button
-              type="submit"
-              disabled={!isValid}
-              variant="contained"
-              color="success"
-            >
-              {signUp}
-            </Button>
-          </div>
+          <Button
+            type="submit"
+            disabled={!isValid}
+            variant="contained"
+            color="success"
+          >
+            {signIn}
+          </Button>
+          <Button
+            type="button"
+            onClick={() => googleLogin()}
+            variant="contained"
+          >
+            Google
+          </Button>
         </form>
         <MessageSnackbar
           isOpen={isError}

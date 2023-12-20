@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import { Editor } from "../../components/editor/editor";
-import { Settings } from "../../components/settings/settings";
-import { useAppContext } from "../../provisers/LangProvider";
-import "./graphiQL.css";
-import { AuthContext } from "../../provisers/AuthProviders";
+import { useAppContext } from "../../providers/LangProvider";
+import "./GraphiQLPage.css";
+import { AuthContext } from "../../providers/AuthProviders";
 import { APP_ROUTES } from "../../constants/constants";
-import { SignInPage } from "../signIn-page/sign-in";
+import { SignInPage } from "../SignInPage/SignInPage";
 import { useRedirect } from "../../hooks/useRedirect";
+import { Settings } from "../../components/settings/settings";
+import { Editor } from "../../components/editor/editor";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();

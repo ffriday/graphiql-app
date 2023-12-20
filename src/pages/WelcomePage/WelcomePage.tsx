@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { LANGUAGES, lang } from "../../constants/lang";
-import { useAppContext } from "../../provisers/LangProvider";
-import { AuthContext } from "../../provisers/AuthProviders";
+import { useAppContext } from "../../providers/LangProvider";
+import { AuthContext } from "../../providers/AuthProviders";
 import { NavLink } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/constants";
 
