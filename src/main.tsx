@@ -4,7 +4,7 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { AppContextProvider } from "./providers/LangProvider";
 import { router } from "./router";
-import { QueryProvider } from "./providers/queryProvider";
+import { QueryProvider } from "./providers/queryProvider/queryProvider";
 import { AuthProvider } from "./providers/AuthProviders";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 

@@ -1,4 +1,4 @@
-import { TQuery } from "../../providers/queryProvider";
+import { TQuery } from "../providers/queryProvider/queryProvider";
 
 export const prettify = (code: string) => {
   const { value, isValid } = parseCode(code);

@@ -1,5 +1,5 @@
-import { useQueryContext } from "../../providers/queryProvider";
-import { prettify } from "../editor/prettify";
+import { useQueryContext } from "../../providers/queryProvider/queryContext";
+import { prettify } from "../../functions";
 import CleaningServicesOutlinedIcon from "@mui/icons-material/CleaningServices";
 import styles from "./Settings.module.scss";
 import { IconButton } from "@mui/material";
@@ -28,7 +28,7 @@ const PrettifyButton = () => {
     <IconButton
       onClick={prettifyCode}
       disabled={!isValid}
-      aria-aria-label="Prettify"
+      aria-label="Prettify"
     >
       <CleaningServicesOutlinedIcon />
     </IconButton>

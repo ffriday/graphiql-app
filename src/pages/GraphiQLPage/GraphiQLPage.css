@@ -5,13 +5,6 @@
   display: flex;
 }
 
-.settings {
-  background-color: rgb(209, 188, 233);
-  height: 100%;
-  flex: 0 0 8%;
-  width: 100px;
-}
-
 .session {
     height: 95%;
     flex: 1;
