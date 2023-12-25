@@ -1,5 +1,5 @@
 //unformatted query for prettyfy testing
-export const InitialQuery = `
+export const INITIAL_QUERY = `
 # Welcome to GraphiQL
 #
 # GraphiQL is an in-browser tool for writing, validating, and
@@ -23,5 +23,5 @@ query test (id: Int) {
 #end
 `;
 
-export const initialEndpoint =
+export const INITIAL_ENDPOINT =
   "https://swapi-graphql.netlify.app/.netlify/functions/index";

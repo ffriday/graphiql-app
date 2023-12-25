@@ -1,6 +1,6 @@
 import { createContext, useContext } from "react";
 import { parseCode } from "../../functions";
-import { QueryData, initialEndpoint, InitialQuery } from "./";
+import { QueryData, INITIAL_QUERY, INITIAL_ENDPOINT } from "./";
 
 type QueryContext = {
   data: QueryData;
@@ -8,8 +8,8 @@ type QueryContext = {
 };
 
 export const initialQueryContext: QueryData = {
-  endpoint: initialEndpoint,
-  query: { value: InitialQuery, isValid: parseCode(InitialQuery).isValid },
+  endpoint: INITIAL_ENDPOINT,
+  query: { value: INITIAL_QUERY, isValid: parseCode(INITIAL_ENDPOINT).isValid },
   variables: "",
   headers: "",
 };

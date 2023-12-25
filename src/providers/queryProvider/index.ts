@@ -4,13 +4,13 @@ import {
   useQueryContext,
   initialQueryContext,
 } from "./queryContext";
-import { InitialQuery, initialEndpoint } from "./constants";
+import { INITIAL_QUERY, INITIAL_ENDPOINT } from "./constants";
 
 export type { Query, QueryData };
 export {
   QueryContext,
   useQueryContext,
-  InitialQuery,
-  initialEndpoint,
+  INITIAL_QUERY,
+  INITIAL_ENDPOINT,
   initialQueryContext,
 };
