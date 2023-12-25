@@ -1,18 +1,18 @@
 import { useQueryContext } from "../../providers/queryProvider/queryContext";
 import { prettify } from "../../functions";
 import CleaningServicesOutlinedIcon from "@mui/icons-material/CleaningServices";
-import styles from "./Settings.module.scss";
+import { styles } from "./";
 import { IconButton } from "@mui/material";
 
-export const Settings = () => {
+export function Settings(): JSX.Element {
   return (
     <aside className={styles.settings}>
       <PrettifyButton />
     </aside>
   );
-};
+}
 
-const PrettifyButton = () => {
+function PrettifyButton(): JSX.Element {
   const {
     data: {
       query: { value, isValid },
@@ -33,4 +33,4 @@ const PrettifyButton = () => {
       <CleaningServicesOutlinedIcon />
     </IconButton>
   );
-};
+}

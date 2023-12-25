@@ -1,5 +1,5 @@
 //unformatted query for prettyfy testing
-export const initialQuery = `
+export const InitialQuery = `
 # Welcome to GraphiQL
 #
 # GraphiQL is an in-browser tool for writing, validating, and

@@ -1,16 +1,16 @@
-import { TQuery, TQueryData } from "./types";
+import { Query, QueryData } from "./types";
 import {
   QueryContext,
   useQueryContext,
   initialQueryContext,
 } from "./queryContext";
-import { initialQuery, initialEndpoint } from "./constants";
+import { InitialQuery, initialEndpoint } from "./constants";
 
-export type { TQuery, TQueryData };
+export type { Query, QueryData };
 export {
   QueryContext,
   useQueryContext,
-  initialQuery,
+  InitialQuery,
   initialEndpoint,
   initialQueryContext,
 };

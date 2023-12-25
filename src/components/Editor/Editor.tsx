@@ -3,7 +3,7 @@ import { useQueryContext } from "../../providers/queryProvider";
 import { parseCode } from "../../functions/prettify";
 import { useCallback } from "react";
 
-export const Editor = () => {
+export function Editor(): JSX.Element {
   const {
     data: {
       query: { value },
@@ -28,4 +28,4 @@ export const Editor = () => {
       onChange={onChange}
     />
   );
-};
+}

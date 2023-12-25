@@ -1,11 +1,11 @@
-export type TQuery = {
+export type Query = {
   value: string;
   isValid: boolean;
 };
 
-export type TQueryData = {
+export type QueryData = {
   endpoint: string;
-  query: TQuery;
+  query: Query;
   variables: string;
   headers: string;
 };

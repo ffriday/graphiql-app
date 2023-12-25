@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { QueryContext, TQueryData, initialQueryContext } from "./";
+import { QueryContext, QueryData, initialQueryContext } from "./";
 
 export const QueryProvider = ({ children }: { children: React.ReactNode }) => {
-  const [data, setData] = useState<TQueryData>(initialQueryContext);
+  const [data, setData] = useState<QueryData>(initialQueryContext);
 
-  const updateData = (updatedQueryPart: Partial<TQueryData>) => {
+  const updateData = (updatedQueryPart: Partial<QueryData>) => {
     setData({ ...data, ...updatedQueryPart });
   };
 

@@ -1,20 +1,20 @@
 import { createContext, useContext } from "react";
 import { parseCode } from "../../functions";
-import { TQueryData, initialEndpoint, initialQuery } from "./";
+import { QueryData, initialEndpoint, InitialQuery } from "./";
 
-type TQueryContext = {
-  data: TQueryData;
-  updateData: (query: Partial<TQueryData>) => void;
+type QueryContext = {
+  data: QueryData;
+  updateData: (query: Partial<QueryData>) => void;
 };
 
-export const initialQueryContext: TQueryData = {
+export const initialQueryContext: QueryData = {
   endpoint: initialEndpoint,
-  query: { value: initialQuery, isValid: parseCode(initialQuery).isValid },
+  query: { value: InitialQuery, isValid: parseCode(InitialQuery).isValid },
   variables: "",
   headers: "",
 };
 
-export const QueryContext = createContext<TQueryContext>({
+export const QueryContext = createContext<QueryContext>({
   data: initialQueryContext,
   updateData: () => {},
 });

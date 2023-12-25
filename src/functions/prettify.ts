@@ -1,4 +1,4 @@
-import { TQuery } from "../providers/queryProvider";
+import { Query } from "../providers/queryProvider";
 
 export const prettify = (code: string) => {
   const { value, isValid } = parseCode(code);
@@ -44,7 +44,7 @@ const formatCode = (code: string, tabulation: number = 2) => {
   return result.join("\n").trim();
 };
 
-export const parseCode = (code: string): TQuery => {
+export const parseCode = (code: string): Query => {
   const value = cleanCode(code);
   const isValid = checkCode(value);
   return { value, isValid };
