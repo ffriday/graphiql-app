@@ -1,12 +1,12 @@
-import { useQueryContext } from "../../providers/queryProvider/queryContext";
-import { prettify } from "../../functions";
+import { useQueryContext } from "../../../providers/queryProvider/queryContext";
+import { prettify } from "../../../functions";
 import CleaningServicesOutlinedIcon from "@mui/icons-material/CleaningServices";
-import { styles } from "./";
+import { styles } from ".";
 import { IconButton } from "@mui/material";
 
-export function Settings(): JSX.Element {
+export function Toolbar(): JSX.Element {
   return (
-    <aside className={styles.settings}>
+    <aside className={styles.Toolbar}>
       <PrettifyButton />
     </aside>
   );

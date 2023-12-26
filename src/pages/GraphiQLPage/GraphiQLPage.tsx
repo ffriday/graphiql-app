@@ -6,8 +6,8 @@ import { AuthContext } from "../../providers/AuthProviders";
 import { APP_ROUTES } from "../../constants/constants";
 import { SignInPage } from "../SignInPage/SignInPage";
 import { useRedirect } from "../../hooks/useRedirect";
-import { Settings } from "../../components/Settings/Settings";
-import { Editor } from "../../components/Editor/Editor";
+import { Toolbar } from "./Toolbar";
+import { Editor } from "./Editor";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
@@ -18,10 +18,10 @@ export const GraphiQLPage = () => {
 
   return userId ? (
     <>
-      <h1>GraphiQL</h1>
+      <h1>GraphQL</h1>
       <p>{graphiQLMessage}</p>
       <div className="graphiQL-container">
-        <Settings />
+        <Toolbar />
         <main className="session">
           <Editor />
           <div className="response"></div>

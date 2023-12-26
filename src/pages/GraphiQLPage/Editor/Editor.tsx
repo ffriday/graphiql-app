@@ -1,6 +1,6 @@
 import CodeMirror from "@uiw/react-codemirror";
-import { useQueryContext } from "../../providers/queryProvider";
-import { parseCode } from "../../functions/prettify";
+import { useQueryContext } from "../../../providers/queryProvider";
+import { parseCode } from "../../../functions/prettify";
 import { useCallback } from "react";
 
 export function Editor(): JSX.Element {
