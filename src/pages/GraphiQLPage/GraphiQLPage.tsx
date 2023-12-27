@@ -8,6 +8,7 @@ import { SignInPage } from "../SignInPage/SignInPage";
 import { useRedirect } from "../../hooks/useRedirect";
 import { Toolbar } from "./Toolbar";
 import { Editor } from "./Editor";
+import { useLoadQuery } from "../../hooks/useLoadQuery";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
@@ -15,6 +16,7 @@ export const GraphiQLPage = () => {
   const { userId } = useContext(AuthContext);
 
   useRedirect(`/${APP_ROUTES.SIGNIN}`, null);
+  useLoadQuery(userId);
 
   return userId ? (
     <>
