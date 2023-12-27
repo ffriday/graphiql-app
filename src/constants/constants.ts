@@ -5,6 +5,12 @@ export const APP_ROUTES = {
   GRAPHIQL: "graphiQL",
 };
 
+export enum ParamKeys {
+  query = "query",
+  variables = "variables",
+  headers = "headers",
+}
+
 //unformatted query for prettyfy testing
 export const INITIAL_QUERY = `
 # Welcome to GraphiQL
@@ -32,9 +38,3 @@ query test (id: Int) {
 
 export const INITIAL_ENDPOINT =
   "https://swapi-graphql.netlify.app/.netlify/functions/index";
-
-export enum ParamKeys {
-  query = "query",
-  variables = "variables",
-  headers = "headers",
-}

@@ -1,36 +1,44 @@
-import { useQueryContext } from "../../../providers/queryProvider/queryContext";
-import { prettify } from "../../../functions";
 import CleaningServicesOutlinedIcon from "@mui/icons-material/CleaningServices";
+import PlayCircleOutline from "@mui/icons-material/PlayCircleOutline";
 import { styles } from ".";
 import { IconButton } from "@mui/material";
+import { useGetQuery } from "../../../hooks";
+import { parseCode, prettify } from "../../../functions";
+import { useSearchParams } from "react-router-dom";
+import { ParamKeys } from "../../../constants";
 
 export function Toolbar(): JSX.Element {
   return (
     <aside className={styles.Toolbar}>
+      <SubmitButton />
       <PrettifyButton />
     </aside>
   );
 }
 
 function PrettifyButton(): JSX.Element {
-  const {
-    data: {
-      query: { value, isValid },
-    },
-    updateData,
-  } = useQueryContext();
+  const [, setSearchParams] = useSearchParams();
+  const { query } = useGetQuery();
 
   const prettifyCode = () => {
-    updateData({ query: { value: prettify(value), isValid } });
+    setSearchParams({ [ParamKeys.query]: prettify(query) });
   };
 
   return (
     <IconButton
       onClick={prettifyCode}
-      disabled={!isValid}
+      disabled={!parseCode(query).isValid}
       aria-label="Prettify"
     >
       <CleaningServicesOutlinedIcon />
+    </IconButton>
+  );
+}
+
+function SubmitButton(): JSX.Element {
+  return (
+    <IconButton onClick={() => null} aria-label="Submit">
+      <PlayCircleOutline />
     </IconButton>
   );
 }

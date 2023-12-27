@@ -1,31 +1,27 @@
 import CodeMirror from "@uiw/react-codemirror";
-import { useQueryContext } from "../../../providers/queryProvider";
-import { parseCode } from "../../../functions/prettify";
-import { useCallback } from "react";
+import { Toolbar } from "../Toolbar";
+import { useGetQuery } from "../../../hooks";
+import { useSearchParams } from "react-router-dom";
+import { ParamKeys } from "../../../constants";
 
 export function Editor(): JSX.Element {
-  const {
-    data: {
-      query: { value },
-    },
-    updateData,
-  } = useQueryContext();
+  const [, setSearchParams] = useSearchParams();
+  const { query } = useGetQuery();
 
-  const onChange = useCallback(
-    (value: string) => {
-      const { isValid } = parseCode(value);
-      updateData({ query: { value, isValid } });
-    },
-    [updateData],
-  );
+  const onChange = (value: string) => {
+    setSearchParams({ [ParamKeys.query]: value });
+  };
 
   return (
-    <CodeMirror
-      className="editor"
-      value={value}
-      width="100%"
-      height="100%"
-      onChange={onChange}
-    />
+    <>
+      <Toolbar />
+      <CodeMirror
+        className="editor"
+        value={query}
+        width="100%"
+        height="100%"
+        onChange={onChange}
+      />
+    </>
   );
 }

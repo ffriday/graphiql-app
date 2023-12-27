@@ -4,7 +4,6 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { AppContextProvider } from "./providers/LangProvider";
 import { router } from "./router";
-import { QueryProvider } from "./providers/queryProvider/queryProvider";
 import { AuthProvider } from "./providers/AuthProviders";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -23,9 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <AppContextProvider>
-          <QueryProvider>
-            <RouterProvider router={router} />
-          </QueryProvider>
+          <RouterProvider router={router} />
         </AppContextProvider>
       </AuthProvider>
     </QueryClientProvider>

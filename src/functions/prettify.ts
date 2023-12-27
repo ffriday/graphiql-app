@@ -1,4 +1,4 @@
-import { Query } from "../providers/queryProvider";
+import { Query } from "../constants";
 
 export const prettify = (code: string) => {
   const { value, isValid } = parseCode(code);
@@ -57,9 +57,14 @@ const cleanCode = (code: string) =>
     .map((line) => line.trim())
     .join("\n");
 
-const checkCode = (code: string) =>
-  code.split("").reduce((acc, char) => {
-    if (char === "{") acc++;
-    if (char === "}") acc = acc > 0 ? acc - 1 : -Infinity;
-    return acc;
-  }, 0) === 0;
+const checkCode = (code: string) => {
+  const lines = code.split("");
+  if (lines.length < 2) return false;
+  return (
+    lines.reduce((acc, char) => {
+      if (char === "{") acc++;
+      if (char === "}") acc = acc > 0 ? acc - 1 : -Infinity;
+      return acc;
+    }, 0) === 0
+  );
+};
