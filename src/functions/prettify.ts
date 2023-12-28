@@ -59,7 +59,9 @@ const cleanCode = (code: string) =>
 
 const checkCode = (code: string) => {
   const lines = code.split("");
-  if (lines.length < 2) return false;
+  if (lines.length < 2) {
+    return false;
+  }
   return (
     lines.reduce((acc, char) => {
       if (char === "{") acc++;
