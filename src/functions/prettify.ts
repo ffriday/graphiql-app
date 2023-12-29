@@ -8,9 +8,8 @@ export const prettify = (code: string) => {
   return formatCode(value);
 };
 
-const formatCode = (value: string) => {
+const formatCode = (value: string, tab: string = "  ") => {
   const code = cleanCode(value);
-  const tab = "  ";
 
   const lines = code
     .split(/[{}]+/)
