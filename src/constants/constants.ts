@@ -17,22 +17,22 @@ export const INITIAL_QUERY = `
 #
 # GraphiQL is an in-browser tool for writing, validating, and
 # testing GraphQL queries.
-
-query test (id: Int) {
-  allFilms {
-    edges {
-      node {
-        id
-
-    name
-      }
-      node {
-        id
-      }
-    }
-      }
-}
-
+#
+#query test (id: Int) {
+#  allFilms {
+#    edges {
+#      node {
+#        id
+#
+#    name
+#      }
+#      node {
+#        id
+#      }
+#    }
+#      }
+#}
+#
 #end
 `;
 
