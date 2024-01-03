@@ -21,13 +21,9 @@ const formatCode = (value: string, tab: string = "  "): string => {
     return acc;
   }, []);
 
-  const structuredLines = lines.map<[string, number, string]>((line, i) => {
-    if (indents[i]) {
-      return [line, indents[i][0], indents[i][1]];
-    } else {
-      return [line, 0, ""];
-    }
-  });
+  const structuredLines = lines.map<[string, number, string]>((line, i) =>
+    indents[i] ? [line, indents[i][0], indents[i][1]] : [line, 0, ""],
+  );
 
   const res = structuredLines
     .reduce<string[]>((acc, [text, indent, type]) => {
@@ -59,7 +55,7 @@ export const cleanCode = (code: string): string =>
 
 export const checkCode = (code: string): boolean => {
   const lines = code.split("");
-  if (lines.length < 2) {
+  if (lines.length < 2 || code.split(/[{}]+/).length < 2) {
     return false;
   }
   return (
