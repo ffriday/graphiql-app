@@ -10,6 +10,7 @@ export function Editor(): JSX.Element {
 
   const onChange = (value: string) => {
     setSearchParams({ [ParamKeys.query]: value });
+    window.localStorage.setItem(ParamKeys.query, value);
   };
 
   return (

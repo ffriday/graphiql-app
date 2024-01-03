@@ -1,14 +1,13 @@
-import { Query } from "../constants";
-
-export const prettify = (code: string) => {
-  const { value, isValid } = parseCode(code);
+export const prettify = (code: string): string => {
+  const value = cleanCode(code);
+  const isValid = checkCode(value);
   if (!isValid) {
     return code;
   }
   return formatCode(value);
 };
 
-const formatCode = (value: string, tab: string = "  ") => {
+const formatCode = (value: string, tab: string = "  "): string => {
   const code = cleanCode(value);
 
   const lines = code
@@ -48,13 +47,7 @@ const formatCode = (value: string, tab: string = "  ") => {
   return res;
 };
 
-export const parseCode = (code: string): Query => {
-  const value = cleanCode(code);
-  const isValid = checkCode(value);
-  return { value, isValid };
-};
-
-const cleanCode = (code: string) =>
+export const cleanCode = (code: string): string =>
   code
     .replaceAll(/[ \t]+/g, " ")
     .replaceAll("( ", "(")
@@ -64,7 +57,7 @@ const cleanCode = (code: string) =>
     .map((line) => line.trim())
     .join("\n");
 
-const checkCode = (code: string) => {
+export const checkCode = (code: string): boolean => {
   const lines = code.split("");
   if (lines.length < 2) {
     return false;

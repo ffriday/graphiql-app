@@ -1,3 +1,3 @@
-import { prettify, parseCode } from "./prettify";
+import { prettify, cleanCode, checkCode } from "./prettify";
 
-export { prettify, parseCode };
+export { prettify, cleanCode, checkCode };

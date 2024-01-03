@@ -4,7 +4,7 @@ import DeleteForeverOutlined from "@mui/icons-material/DeleteForeverOutlined";
 import { styles } from ".";
 import { IconButton } from "@mui/material";
 import { useGetQuery } from "../../../hooks";
-import { parseCode, prettify } from "../../../functions";
+import { checkCode, cleanCode, prettify } from "../../../functions";
 import { useSearchParams } from "react-router-dom";
 import { INITIAL_QUERY, ParamKeys } from "../../../constants";
 
@@ -29,7 +29,7 @@ function PrettifyButton(): JSX.Element {
   return (
     <IconButton
       onClick={prettifyCode}
-      disabled={!parseCode(query).isValid}
+      disabled={!checkCode(cleanCode(query))}
       aria-label="Prettify"
     >
       <CleaningServicesOutlinedIcon />
