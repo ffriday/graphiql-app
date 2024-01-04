@@ -1,6 +1,4 @@
 import { useContext } from "react";
-// import { useAppContext } from "../../providers/LangProvider";
-// import { LANGUAGES, lang } from "../../constants/lang";
 import "./GraphiQLPage.css";
 import { AuthContext } from "../../providers/AuthProviders";
 import { APP_ROUTES, LangPages } from "../../constants/constants";
