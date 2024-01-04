@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 export function useLoadQuery(userId: string | null) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentQuery = searchParams.get(ParamKeys.query);
   useEffect(() => {
+    const currentQuery = searchParams.get(ParamKeys.query);
     if (userId && currentQuery === null) {
       const query =
         window.localStorage.getItem(ParamKeys.query) || INITIAL_QUERY;
@@ -23,5 +23,5 @@ export function useLoadQuery(userId: string | null) {
         [ParamKeys.headers]: headers,
       });
     }
-  }, [currentQuery, searchParams, setSearchParams, userId]);
+  }, [searchParams, setSearchParams, userId]);
 }

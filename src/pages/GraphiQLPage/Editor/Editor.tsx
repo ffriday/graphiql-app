@@ -1,12 +1,11 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { Toolbar } from "../Toolbar";
-import { useGetQuery } from "../../../hooks";
 import { useSearchParams } from "react-router-dom";
 import { ParamKeys } from "../../../constants";
 
 export function Editor(): JSX.Element {
-  const [, setSearchParams] = useSearchParams();
-  const { query } = useGetQuery();
+  const [getSearchParams, setSearchParams] = useSearchParams();
+  const query = getSearchParams.get(ParamKeys.query) ?? "";
 
   const onChange = (value: string) => {
     setSearchParams({ [ParamKeys.query]: value });
