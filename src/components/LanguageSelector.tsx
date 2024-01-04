@@ -1,14 +1,16 @@
 import { useContext, useState } from "react";
-import { TranslateContext } from "../providers/TranslateProvider";
+import { TranslateContext } from "../providers";
 import { LANGUAGES, ParamKeys } from "../constants";
+import { getCurrentLang } from "../functions";
 
 export const LanguageSelector = () => {
   const { setLanguage } = useContext(TranslateContext);
-  const [selectorLanguage, setSelectorLanguage] = useState(LANGUAGES.EN);
+  const [selectorLanguage, setSelectorLanguage] = useState(getCurrentLang());
   const handleLanguageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
     const newLanguage = event.target.value as LANGUAGES;
+
     setLanguage(newLanguage);
     setSelectorLanguage(newLanguage);
     window.localStorage.setItem(ParamKeys.language, newLanguage);

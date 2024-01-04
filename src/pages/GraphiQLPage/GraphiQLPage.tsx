@@ -10,8 +10,6 @@ import { useLoadQuery, useRedirect, useTranslate } from "../../hooks";
 
 export const GraphiQLPage = () => {
   const translate = useTranslate(LangPages.graphql);
-  // const { language } = useAppContext();
-  // const { graphiQLMessage } = lang[language as keyof typeof LANGUAGES];
   const { userId } = useContext(AuthContext);
 
   useRedirect(`/${APP_ROUTES.SIGNIN}`, null);

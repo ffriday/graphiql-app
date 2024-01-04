@@ -1,6 +1,10 @@
 import { createContext, useState } from "react";
 import { LANGUAGES } from "../constants";
-import { loadDefaultTranslation, loadLocale } from "../functions";
+import {
+  getCurrentLang,
+  loadDefaultTranslation,
+  loadLocale,
+} from "../functions";
 
 export type TranslationMap = Record<string, Record<string, string>>;
 
@@ -9,7 +13,7 @@ export type TranslationFunction = (key: string) => string;
 export type Translations = Record<LANGUAGES, TranslationMap>;
 
 export type TranslateContextType = {
-  locale: Record<string, Record<string, string>>;
+  locale: TranslationMap;
   setLanguage: (language: LANGUAGES) => void;
 };
 
@@ -25,7 +29,7 @@ export const TranslateProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [locale, setLocale] = useState(translations[LANGUAGES.EN]);
+  const [locale, setLocale] = useState(translations[getCurrentLang()]);
 
   const setLanguage = async (lang: LANGUAGES) => {
     if (Object.keys(translations[lang]).length) {

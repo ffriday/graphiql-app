@@ -51,4 +51,5 @@ export enum LangPages {
   signup = "signUp-page",
   graphql = "graphQL-page",
   shared = "shared",
+  toolbar = "toolbar",
 }

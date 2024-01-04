@@ -16,10 +16,13 @@ export const loadLocale = async (
   return {};
 };
 
-export const loadDefaultTranslation = async () => {
+export const getCurrentLang = () => {
   const prevLanguage = window.localStorage.getItem(ParamKeys.language) ?? "";
-  const currentLanguageKey =
-    prevLanguage in LANGUAGES ? (prevLanguage as LANGUAGES) : LANGUAGES.EN;
+  return prevLanguage in LANGUAGES ? (prevLanguage as LANGUAGES) : LANGUAGES.EN;
+};
+
+export const loadDefaultTranslation = async () => {
+  const currentLanguageKey = getCurrentLang();
 
   const languages = Object.values(LANGUAGES).reduce<Translations>(
     (acc, key) => {

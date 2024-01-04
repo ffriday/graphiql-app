@@ -1,33 +1,22 @@
-import { LANGUAGES, lang } from "../../constants/lang";
-import { useAppContext } from "../../providers/LangProvider";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./sign-in.module.scss";
-import { signInSchema } from "../../constants/signInValidation";
+import { LangPages, signInSchema } from "../../constants";
 import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProviders";
+import { AuthContext } from "../../providers";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "../../auth/useAuth";
 import MessageSnackbar from "../../components/MessageSnaсkbar/MessageSnackbar";
-import { useRedirect } from "../../hooks/useRedirect";
+import { useRedirect, useTranslate } from "../../hooks";
 import { Credentials } from "../../auth/types";
 
 export const SignInPage = () => {
   const { userId } = useContext(AuthContext);
-
   const { googleLogin, handleSignIn, error, isError } = useAuth();
-  const { language } = useAppContext();
-  const {
-    signIn,
-    passwordPlaceholder,
-    passwordMaxLength,
-    passwordIsRequired,
-    passwordLength,
-    emailIsRequired,
-    emailValid,
-    passwordRequirements,
-  } = lang[language as keyof typeof LANGUAGES];
+  const translateSystem = useTranslate(LangPages.shared);
+  const translate = useTranslate(LangPages.signin);
+
   const {
     register,
     formState: { errors, isValid },
@@ -37,12 +26,12 @@ export const SignInPage = () => {
     mode: "onBlur",
     resolver: yupResolver(
       signInSchema(
-        passwordMaxLength,
-        passwordIsRequired,
-        passwordLength,
-        passwordRequirements,
-        emailIsRequired,
-        emailValid,
+        translateSystem("passwordMaxLength"),
+        translateSystem("passwordIsRequired"),
+        translateSystem("passwordLength"),
+        translateSystem("passwordRequirements"),
+        translateSystem("emailIsRequired"),
+        translateSystem("emailValid"),
       ),
     ),
   });
@@ -56,7 +45,7 @@ export const SignInPage = () => {
   return (
     !userId && (
       <div className="container-auth">
-        <h2>{signIn}</h2>
+        <h2>{translate("signIn")}</h2>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <TextField
             placeholder="E-mail"
@@ -67,7 +56,7 @@ export const SignInPage = () => {
           />
           <TextField
             type="password"
-            placeholder={passwordPlaceholder}
+            placeholder={translateSystem("passwordPlaceholder")}
             {...register("password")}
             variant="outlined"
             error={Boolean(errors.password)}
@@ -79,7 +68,7 @@ export const SignInPage = () => {
             variant="contained"
             color="success"
           >
-            {signIn}
+            {translate("signIn")}
           </Button>
           <Button
             type="button"

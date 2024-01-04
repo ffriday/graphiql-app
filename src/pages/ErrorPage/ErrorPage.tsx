@@ -1,8 +1,7 @@
-import { LANGUAGES, lang } from "../../constants/lang";
-import { useAppContext } from "../../providers/LangProvider";
+import { LangPages } from "../../constants";
+import { useTranslate } from "../../hooks";
 
 export const ErrorPage = () => {
-  const { language } = useAppContext();
-  const { errorMessage } = lang[language as keyof typeof LANGUAGES];
-  return <h1>{errorMessage}</h1>;
+  const translate = useTranslate(LangPages.shared);
+  return <h1>{translate("errorMessage")}</h1>;
 };
