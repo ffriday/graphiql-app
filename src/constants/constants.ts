@@ -9,6 +9,7 @@ export enum ParamKeys {
   query = "query",
   variables = "variables",
   headers = "headers",
+  language = "lang",
 }
 
 //unformatted query for prettyfy testing
@@ -37,3 +38,17 @@ export const INITIAL_QUERY = `# Welcome to GraphiQL
 
 export const INITIAL_ENDPOINT =
   "https://swapi-graphql.netlify.app/.netlify/functions/index";
+
+export enum LANGUAGES {
+  EN = "EN",
+  RU = "RU",
+}
+
+export enum LangPages {
+  welcome = "welcome-page",
+  header = "header",
+  signin = "signIn-page",
+  signup = "signUp-page",
+  graphql = "graphQL-page",
+  shared = "shared",
+}
