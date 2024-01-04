@@ -1,0 +1,23 @@
+$modal-width: 400px;
+$modal-border-color: #000;
+$modal-box-shadow: 24px;
+$modal-color: white;
+
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $modal-width;
+  background-color: $modal-color;
+  border-radius: 4px;
+  box-shadow: $modal-box-shadow;
+  padding: 16px;
+}
+
+.modal-close-btn{
+    align-self: flex-end;
+}

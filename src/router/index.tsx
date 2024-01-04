@@ -17,12 +17,12 @@ export const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />} errorElement={<ErrorPage />}>
       <Route
         path={APP_ROUTES.SIGNIN}
-        element={<SignInPage />}
+        // element={<SignInPage />}
         errorElement={<SignInPage />}
       />
       <Route
         path={APP_ROUTES.SIGNUP}
-        element={<SignUpPage />}
+        // element={<SignUpPage />}
         errorElement={<SignUpPage />}
       />
       <Route

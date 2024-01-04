@@ -54,47 +54,44 @@ export const SignInPage = () => {
   };
 
   return (
-    !userId && (
-      <div className="container-auth">
-        <h2>{signIn}</h2>
-        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          <TextField
-            placeholder="E-mail"
-            {...register("email")}
-            variant="outlined"
-            error={Boolean(errors.email)}
-            helperText={errors.email?.message ?? ""}
-          />
-          <TextField
-            type="password"
-            placeholder={passwordPlaceholder}
-            {...register("password")}
-            variant="outlined"
-            error={Boolean(errors.password)}
-            helperText={errors.password?.message ?? ""}
-          />
-          <Button
-            type="submit"
-            disabled={!isValid}
-            variant="contained"
-            color="success"
-          >
-            {signIn}
-          </Button>
-          <Button
-            type="button"
-            onClick={() => googleLogin()}
-            variant="contained"
-          >
-            Google
-          </Button>
-        </form>
-        <MessageSnackbar
-          isOpen={isError}
-          message={error?.message ?? ""}
-          severity="error"
+    // !userId && (
+    <div className="container-auth">
+      <h2>{signIn}</h2>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <TextField
+          placeholder="E-mail"
+          {...register("email")}
+          variant="outlined"
+          error={Boolean(errors.email)}
+          helperText={errors.email?.message ?? ""}
         />
-      </div>
-    )
+        <TextField
+          type="password"
+          placeholder={passwordPlaceholder}
+          {...register("password")}
+          variant="outlined"
+          error={Boolean(errors.password)}
+          helperText={errors.password?.message ?? ""}
+        />
+        <Button
+          type="submit"
+          disabled={!isValid}
+          variant="contained"
+          color="success"
+        >
+          {signIn}
+        </Button>
+        <Button type="button" onClick={() => googleLogin()} variant="contained">
+          Google
+        </Button>
+      </form>
+
+      <MessageSnackbar
+        isOpen={isError}
+        message={error?.message ?? ""}
+        severity="error"
+      />
+    </div>
   );
+  // );
 };
