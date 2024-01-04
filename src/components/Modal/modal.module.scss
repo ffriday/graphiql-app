@@ -3,7 +3,7 @@ $modal-border-color: #000;
 $modal-box-shadow: 24px;
 $modal-color: white;
 
-.modal-container {
+.modal {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -15,9 +15,16 @@ $modal-color: white;
   background-color: $modal-color;
   border-radius: 4px;
   box-shadow: $modal-box-shadow;
-  padding: 16px;
+  padding-bottom: 40px;
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 }
 
-.modal-close-btn{
-    align-self: flex-end;
+.modal-close-btn {
+  align-self: flex-end;
+  cursor: pointer;
 }

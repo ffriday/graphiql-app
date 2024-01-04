@@ -12,20 +12,20 @@
 }
 
 .session {
-    height: 95%;
-    flex: 1;
-    padding: 0.5rem;
-    display: flex;
+  height: 95%;
+  flex: 1;
+  padding: 0.5rem;
+  display: flex;
 }
 
 .editor {
-   background-color: white;
-   width: 50%;
-   height: 100%;
-   border-radius: 15px;
+  background-color: white;
+  width: 50%;
+  height: 100%;
+  border-radius: 15px;
 }
 
 .response {
-    width: 50%;
-    height: 100%;
+  width: 50%;
+  height: 100%;
 }

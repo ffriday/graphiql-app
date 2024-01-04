@@ -4,18 +4,13 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./sign-in.module.scss";
 import { signInSchema } from "../../constants/signInValidation";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProviders";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "../../auth/useAuth";
 import MessageSnackbar from "../../components/MessageSnaсkbar/MessageSnackbar";
-import { useRedirect } from "../../hooks/useRedirect";
 import { Credentials } from "../../auth/types";
 
 export const SignInPage = () => {
-  const { userId } = useContext(AuthContext);
-
   const { googleLogin, handleSignIn, error, isError } = useAuth();
   const { language } = useAppContext();
   const {
@@ -46,7 +41,6 @@ export const SignInPage = () => {
       ),
     ),
   });
-  useRedirect("/", userId);
 
   const onSubmit = ({ email, password }: Credentials) => {
     handleSignIn({ email, password });
@@ -54,8 +48,7 @@ export const SignInPage = () => {
   };
 
   return (
-    // !userId && (
-    <div className="container-auth">
+    <div className={styles["container-auth"]}>
       <h2>{signIn}</h2>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <TextField

@@ -4,24 +4,33 @@ import { useAppContext } from "../../providers/LangProvider";
 import { AuthContext } from "../../providers/AuthProviders";
 import { NavLink } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/constants";
+import Button from "@mui/material/Button";
+import styles from "./welcome-page.module.scss";
 
 export const WelcomePage = () => {
   const { language } = useAppContext();
-  const { welcomeMessage } = lang[language as keyof typeof LANGUAGES];
+  const { welcomeMessage, incentivePhrase } =
+    lang[language as keyof typeof LANGUAGES];
   const { userId } = useContext(AuthContext);
-  const { signIn, signUp } = lang[language as keyof typeof LANGUAGES];
+
   return (
     <>
-      <h1>{welcomeMessage}</h1>
       <div>
         <nav className="navigation">
           {!userId ? (
-            <>
-              <NavLink to={APP_ROUTES.SIGNIN}>{signIn}</NavLink>
-              <NavLink to={APP_ROUTES.SIGNUP}>{signUp}</NavLink>
-            </>
+            <h1 className={styles.heading}>{welcomeMessage}</h1>
           ) : (
-            <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
+            <>
+              <div className={styles["welcome-container"]}>
+                <h1 className={styles.heading}>{incentivePhrase}</h1>
+                <NavLink className={styles.link} to={APP_ROUTES.GRAPHIQL}>
+                  {" "}
+                  <Button variant="contained" color="success">
+                    GraphQl
+                  </Button>
+                </NavLink>{" "}
+              </div>
+            </>
           )}
         </nav>
       </div>

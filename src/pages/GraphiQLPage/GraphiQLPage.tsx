@@ -2,17 +2,13 @@ import { useContext } from "react";
 import { useAppContext } from "../../providers/LangProvider";
 import { LANGUAGES, lang } from "../../constants/lang";
 import { AuthContext } from "../../providers/AuthProviders";
-import { APP_ROUTES } from "../../constants/constants";
-import { SignInPage } from "../SignInPage/SignInPage";
-import { useRedirect } from "../../hooks/useRedirect";
 import "./GraphiQLPage.css";
+import { WelcomePage } from "../WelcomePage/WelcomePage";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
   const { graphiQLMessage } = lang[language as keyof typeof LANGUAGES];
   const { userId } = useContext(AuthContext);
-
-  useRedirect(`/${APP_ROUTES.SIGNIN}`, null);
 
   return userId ? (
     <>
@@ -27,6 +23,6 @@ export const GraphiQLPage = () => {
       </div>
     </>
   ) : (
-    <SignInPage />
+    <WelcomePage />
   );
 };

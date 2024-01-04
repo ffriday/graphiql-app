@@ -2,19 +2,16 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import { Modal as ModalUI } from "@mui/base/Modal";
 import Fade from "@mui/material/Fade";
-import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import styles from "./modal.module.scss";
 
-type modalType = {
+type ModalProps = {
   children: React.ReactNode;
   open: boolean;
   onClose: () => void;
 };
 
-const Modal = ({ children, open, onClose, ...props }: modalType) => {
-  console.log(open);
-
+const Modal = ({ children, open, onClose, ...props }: ModalProps) => {
   return (
     <ModalUI
       {...props}
@@ -26,16 +23,11 @@ const Modal = ({ children, open, onClose, ...props }: modalType) => {
       slots={{ backdrop: Backdrop }}
     >
       <Fade in={open}>
-        <Box className={styles["modal-container"]}>
-          <IconButton
-            onClick={onClose}
-            color="secondary"
-            aria-label="delete"
-            className={styles["modal-close-btn"]}
-          >
+        <Box className={styles["modal"]}>
+          <div onClick={onClose} className={styles["modal-close-btn"]}>
             <CloseIcon />
-          </IconButton>
-          <div>{children}</div>
+          </div>
+          <div className={styles["modal-container"]}>{children}</div>
         </Box>
       </Fade>
     </ModalUI>

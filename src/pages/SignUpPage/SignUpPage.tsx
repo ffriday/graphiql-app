@@ -7,14 +7,10 @@ import { signUpSchema } from "../../constants/signUpValidation";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import { useAuth } from "../../auth/useAuth";
-import { useContext } from "react";
-import { AuthContext } from "../../providers/AuthProviders";
 import MessageSnackbar from "../../components/MessageSnaсkbar/MessageSnackbar";
-import { useRedirect } from "../../hooks/useRedirect";
 import { SignUpCredentials } from "../../auth/types";
 
 export const SignUpPage = () => {
-  const { userId } = useContext(AuthContext);
   const { handleSignUp, error, isError } = useAuth();
   const { language } = useAppContext();
   const {
@@ -49,16 +45,13 @@ export const SignUpPage = () => {
     ),
   });
 
-  useRedirect("/", userId);
-
   const onSubmit = ({ email, password }: SignUpCredentials) => {
     handleSignUp({ email, password });
     reset();
   };
 
   return (
-    // !userId && (
-    <div className="container-auth">
+    <div className={styles["container-auth"]}>
       <h2>{signUp}</h2>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <TextField
@@ -84,12 +77,13 @@ export const SignUpPage = () => {
           error={!!errors.passwordConfirmation}
           helperText={errors.passwordConfirmation?.message ?? ""}
         />
-        <div>
+        <div className={styles["button-container"]}>
           <Button
             type="submit"
             disabled={!isValid}
             variant="contained"
             color="success"
+            fullWidth={true}
           >
             {signUp}
           </Button>
