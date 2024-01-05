@@ -13,6 +13,8 @@ import CodeMirror from "@uiw/react-codemirror";
 import { Input, InputLabel } from "@mui/material";
 import styles from "./GraphiQLPage.module.scss";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { prettify } from "../../functions";
 
 export const GraphiQLPage = () => {
   const translate = useTranslate(LangPages.graphql);
@@ -23,11 +25,36 @@ export const GraphiQLPage = () => {
   useRedirect(`/${APP_ROUTES.SIGNIN}`, null);
   useLoadQuery(userId);
 
+  const { isLoading, isFetching, isError, data, error, refetch } = useQuery({
+    queryKey: ["graphql"],
+    queryFn: async () => {
+      const query = searchParams.get(ParamKeys.query) ?? "";
+      // const headers = searchParams.get(ParamKeys.headers) ?? "";
+      const variables = searchParams.get(ParamKeys.variables) ?? "";
+      const endpoint = searchParams.get(ParamKeys.endpoint) ?? "";
+
+      const data = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          // ...JSON.parse(headers),
+        },
+        body: JSON.stringify({ query, variables }),
+        credentials: "same-origin",
+      });
+      return await data.json();
+    },
+    enabled: false,
+  });
+
   const onChange = (value: string, key: ParamKeys) => {
     searchParams.set(key, value);
     setSearchParams(searchParams);
     window.localStorage.setItem(key, value);
   };
+
+  console.log(isLoading, isFetching, isError, data, error);
 
   return userId ? (
     <>
@@ -42,10 +69,10 @@ export const GraphiQLPage = () => {
       </div>
       <div className={styles.graphQLcontainer}>
         <main className={styles.session}>
-          <Editor />
+          <Editor refetch={refetch} />
           <CodeMirror
             className={styles.editor}
-            value={"query"}
+            value={prettify(JSON.stringify(data))}
             height="100%"
             editable={false}
             onChange={() => null}

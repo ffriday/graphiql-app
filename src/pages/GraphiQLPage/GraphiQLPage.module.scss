@@ -1,5 +1,7 @@
 @import "./_mixin.scss";
 
+$endpoint-padding: 5px;
+
 .graphQLcontainer {
   background-color: rgb(229, 230, 231);
   width: 100%;
@@ -13,7 +15,7 @@
     padding: 0.5rem;
     display: flex;
     width: calc(100% - 100px);
-    gap: 5px;
+    gap: $endpoint-padding;
 }
 
 .response {
@@ -22,7 +24,7 @@
 }
 
 .editor {
-  @include editor(100%);
+  @include editor(63vh);
   width: 50%;
 }
 
@@ -30,9 +32,9 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 5px;
-  padding: 0 0 5px 5px;
-  width: 100%;
+  gap: $endpoint-padding;
+  padding: 0 0 $endpoint-padding $endpoint-padding;
+  width: calc(100% - $endpoint-padding);
 }
 
 .endpointInput {

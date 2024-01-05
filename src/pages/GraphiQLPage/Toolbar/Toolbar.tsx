@@ -7,11 +7,12 @@ import { useTranslate } from "../../../hooks";
 import { checkCode, cleanCode, prettify } from "../../../functions";
 import { useSearchParams } from "react-router-dom";
 import { INITIAL_QUERY, LangPages, ParamKeys } from "../../../constants";
+import { FetchGraphQL } from "../Editor";
 
-export function Toolbar(): JSX.Element {
+export function Toolbar({ refetch }: FetchGraphQL): JSX.Element {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get(ParamKeys.query) ?? "";
   const translate = useTranslate(LangPages.toolbar);
+  const query = searchParams.get(ParamKeys.query) ?? "";
 
   const prettifyCode = () => {
     searchParams.set(ParamKeys.query, prettify(query));
@@ -26,9 +27,13 @@ export function Toolbar(): JSX.Element {
     });
   };
 
+  const submit = () => {
+    refetch();
+  };
+
   return (
     <aside className={styles.Toolbar}>
-      <IconButton onClick={() => null} aria-label={translate("submit")}>
+      <IconButton onClick={submit} aria-label={translate("submit")}>
         <PlayCircleOutline />
       </IconButton>
 

@@ -6,8 +6,15 @@ import styles from "./Editor.module.scss";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { useTranslate } from "../../../hooks";
+import { QueryObserverResult, RefetchOptions } from "@tanstack/query-core";
 
-export function Editor(): JSX.Element {
+export type FetchGraphQL = {
+  refetch: (
+    options?: RefetchOptions | undefined,
+  ) => Promise<QueryObserverResult<unknown, Error>>;
+};
+
+export function Editor({ refetch }: FetchGraphQL): JSX.Element {
   const [searchParams, setSearchParams] = useSearchParams();
   const [showVariables, setShowVariables] = useState(true);
   const translate = useTranslate(LangPages.graphql);
@@ -24,7 +31,7 @@ export function Editor(): JSX.Element {
 
   return (
     <>
-      <Toolbar />
+      <Toolbar refetch={refetch} />
       <div className={styles.container}>
         <CodeMirror
           className={styles.editor}
