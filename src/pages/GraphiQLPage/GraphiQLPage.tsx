@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { useAppContext } from "../../providers/LangProvider";
 import { LANGUAGES, lang } from "../../constants/lang";
+import "./GraphiQLPage.css";
 import { AuthContext } from "../../providers/AuthProviders";
 import { APP_ROUTES } from "../../constants/constants";
 import { SignInPage } from "../SignInPage/SignInPage";
-import { useRedirect } from "../../hooks/useRedirect";
-import "./GraphiQLPage.css";
+import { Editor } from "./Editor";
+import { useLoadQuery, useRedirect } from "../../hooks";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
@@ -13,15 +14,15 @@ export const GraphiQLPage = () => {
   const { userId } = useContext(AuthContext);
 
   useRedirect(`/${APP_ROUTES.SIGNIN}`, null);
+  useLoadQuery(userId);
 
   return userId ? (
     <>
-      <h1>GraphiQL</h1>
+      <h1>GraphQL</h1>
       <p>{graphiQLMessage}</p>
       <div className="graphiQL-container">
-        <aside className="settings"></aside>
         <main className="session">
-          <div className="editor"></div>
+          <Editor />
           <div className="response"></div>
         </main>
       </div>
