@@ -23,7 +23,7 @@ export const GraphiQLPage = () => {
       <div className={styles.graphQLcontainer}>
         <main className={styles.session}>
           <Editor />
-          <div className={styles.gresponse}></div>
+          <div className={styles.response}></div>
         </main>
       </div>
     </>
