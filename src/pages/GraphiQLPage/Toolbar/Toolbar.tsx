@@ -8,11 +8,12 @@ import { useSearchParams } from "react-router-dom";
 import { INITIAL_QUERY, ParamKeys } from "../../../constants";
 
 export function Toolbar(): JSX.Element {
-  const [getSearchParams, setSearchParams] = useSearchParams();
-  const query = getSearchParams.get(ParamKeys.query) ?? "";
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get(ParamKeys.query) ?? "";
 
   const prettifyCode = () => {
-    setSearchParams({ [ParamKeys.query]: prettify(query) });
+    searchParams.set(ParamKeys.query, prettify(query));
+    setSearchParams(searchParams);
   };
 
   const clear = () => {
