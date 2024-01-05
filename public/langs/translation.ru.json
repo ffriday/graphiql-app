@@ -21,7 +21,8 @@
     "graphQLMessage": "Здесь будет всё самое интересное",
     "headers": "Заголовки",
     "variables": "Переменные",
-    "endpoint": "Адрес API"
+    "endpoint": "Адрес API",
+    "loading": "ЗАГРУЗКА"
   },
   "toolbar": {
     "submit": "Отправить",

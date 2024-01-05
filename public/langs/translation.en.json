@@ -21,7 +21,8 @@
     "graphQLMessage": "All the most interesting things will be here",
     "headers": "Headers",
     "variables": "Variables",
-    "endpoint": "Endpoint"
+    "endpoint": "Endpoint",
+    "loading": "LOADING"
   },
   "toolbar": {
     "submit": "Submit",

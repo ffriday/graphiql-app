@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import {
   APP_ROUTES,
@@ -70,13 +70,25 @@ export const GraphiQLPage = () => {
       <div className={styles.graphQLcontainer}>
         <main className={styles.session}>
           <Editor refetch={refetch} />
-          <CodeMirror
-            className={styles.editor}
-            value={prettify(JSON.stringify(data))}
-            height="100%"
-            editable={false}
-            onChange={() => null}
-          />
+          <div className={styles.container}>
+            <Suspense
+              fallback={
+                <div className={styles.loader}>{translate("loading")}</div>
+              }
+            >
+              <CodeMirror
+                className={styles.editor}
+                value={prettify(data ? JSON.stringify(data) : "")}
+                height="100%"
+                editable={false}
+              />
+              {isFetching ? (
+                <div className={styles.loader}>{translate("loading")}</div>
+              ) : (
+                <></>
+              )}
+            </Suspense>
+          </div>
         </main>
       </div>
     </>
