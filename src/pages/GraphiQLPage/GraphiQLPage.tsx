@@ -6,6 +6,7 @@ import { APP_ROUTES } from "../../constants/constants";
 import { SignInPage } from "../SignInPage/SignInPage";
 import { Editor } from "./Editor";
 import { useLoadQuery, useRedirect } from "../../hooks";
+import CodeMirror from "@uiw/react-codemirror";
 import styles from "./GraphiQLPage.module.scss";
 
 export const GraphiQLPage = () => {
@@ -23,7 +24,13 @@ export const GraphiQLPage = () => {
       <div className={styles.graphQLcontainer}>
         <main className={styles.session}>
           <Editor />
-          <div className={styles.response}></div>
+          <CodeMirror
+            className={styles.editor}
+            value={"query"}
+            height="100%"
+            editable={false}
+            onChange={() => null}
+          />
         </main>
       </div>
     </>
