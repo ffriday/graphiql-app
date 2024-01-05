@@ -23,5 +23,6 @@ export function useLoadQuery(userId: string | null) {
         [ParamKeys.headers]: headers,
       });
     }
-  }, [searchParams, setSearchParams, userId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 }
