@@ -1,14 +1,16 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { Toolbar } from "../Toolbar";
 import { useSearchParams } from "react-router-dom";
-import { ParamKeys } from "../../../constants";
+import { LangPages, ParamKeys } from "../../../constants";
 import styles from "./Editor.module.scss";
 import { Button } from "@mui/material";
 import { useState } from "react";
+import { useTranslate } from "../../../hooks";
 
 export function Editor(): JSX.Element {
   const [searchParams, setSearchParams] = useSearchParams();
   const [showVariables, setShowVariables] = useState(true);
+  const translate = useTranslate(LangPages.graphql);
 
   const query = searchParams.get(ParamKeys.query) ?? "";
   const headers = searchParams.get(ParamKeys.headers) ?? "";
@@ -37,7 +39,7 @@ export function Editor(): JSX.Element {
             disabled={showVariables}
             onClick={() => setShowVariables(true)}
           >
-            Variables
+            {translate("variables")}
           </Button>
           <Button
             type="button"
@@ -45,7 +47,7 @@ export function Editor(): JSX.Element {
             disabled={!showVariables}
             onClick={() => setShowVariables(false)}
           >
-            Headers
+            {translate("headers")}
           </Button>
         </div>
         <CodeMirror

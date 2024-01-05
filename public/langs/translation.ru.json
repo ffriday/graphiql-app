@@ -18,7 +18,9 @@
     "signUp": "Регистрация"
   },
   "graphQL-page": {
-    "graphQLMessage": "Здесь будет всё самое интересное"
+    "graphQLMessage": "Здесь будет всё самое интересное",
+    "headers": "Заголовки",
+    "variables": "Переменные"
   },
   "toolbar": {
     "submit": "Отправить",

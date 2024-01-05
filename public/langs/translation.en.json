@@ -18,7 +18,9 @@
     "signUp": "Sign up"
   },
   "graphQL-page": {
-    "graphQLMessage": "All the most interesting things will be here"
+    "graphQLMessage": "All the most interesting things will be here",
+    "headers": "Headers",
+    "variables": "Variables"
   },
   "toolbar": {
     "submit": "Submit",

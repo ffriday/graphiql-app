@@ -13,7 +13,6 @@ export const GraphiQLPage = () => {
 
   useRedirect(`/${APP_ROUTES.SIGNIN}`, null);
   useLoadQuery(userId);
-  useLoadQuery(userId);
 
   return userId ? (
     <>
