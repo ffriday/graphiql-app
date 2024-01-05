@@ -31,16 +31,22 @@ export const GraphiQLPage = () => {
     queryFn: async () => {
       const query = searchParams.get(ParamKeys.query) ?? "";
       const headers = searchParams.get(ParamKeys.headers);
-      const headersObject = headers ? JSON.parse(headers) : {};
       const variables = searchParams.get(ParamKeys.variables) ?? "";
       const endpoint = searchParams.get(ParamKeys.endpoint) ?? "";
+
+      let headersObject = {};
+      try {
+        if (headers) headersObject = JSON.parse(headers);
+      } catch (e) {
+        console.log("bad header");
+      }
 
       const data = await fetch(endpoint, {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          ...JSON.parse(headersObject),
+          ...headersObject,
         },
         body: JSON.stringify({ query, variables }),
         credentials: "same-origin",
