@@ -25,11 +25,13 @@ export const GraphiQLPage = () => {
   useRedirect(`/${APP_ROUTES.SIGNIN}`, null);
   useLoadQuery(userId);
 
-  const { isLoading, isFetching, isError, data, error, refetch } = useQuery({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { isFetching, isError, data, error, refetch } = useQuery({
     queryKey: ["graphql"],
     queryFn: async () => {
       const query = searchParams.get(ParamKeys.query) ?? "";
-      // const headers = searchParams.get(ParamKeys.headers) ?? "";
+      const headers = searchParams.get(ParamKeys.headers);
+      const headersObject = headers ? JSON.parse(headers) : {};
       const variables = searchParams.get(ParamKeys.variables) ?? "";
       const endpoint = searchParams.get(ParamKeys.endpoint) ?? "";
 
@@ -38,7 +40,7 @@ export const GraphiQLPage = () => {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          // ...JSON.parse(headers),
+          ...JSON.parse(headersObject),
         },
         body: JSON.stringify({ query, variables }),
         credentials: "same-origin",
@@ -53,8 +55,6 @@ export const GraphiQLPage = () => {
     setSearchParams(searchParams);
     window.localStorage.setItem(key, value);
   };
-
-  console.log(isLoading, isFetching, isError, data, error);
 
   return userId ? (
     <>
