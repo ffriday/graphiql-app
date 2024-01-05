@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useAppContext } from "../../providers/LangProvider";
 import { LANGUAGES, lang } from "../../constants/lang";
-import "./GraphiQLPage.css";
 import { AuthContext } from "../../providers/AuthProviders";
 import { APP_ROUTES } from "../../constants/constants";
 import { SignInPage } from "../SignInPage/SignInPage";
 import { Editor } from "./Editor";
 import { useLoadQuery, useRedirect } from "../../hooks";
+import styles from "./GraphiQLPage.module.scss";
 
 export const GraphiQLPage = () => {
   const { language } = useAppContext();
@@ -20,10 +20,10 @@ export const GraphiQLPage = () => {
     <>
       <h1>GraphQL</h1>
       <p>{graphiQLMessage}</p>
-      <div className="graphiQL-container">
-        <main className="session">
+      <div className={styles.graphQLcontainer}>
+        <main className={styles.session}>
           <Editor />
-          <div className="response"></div>
+          <div className={styles.gresponse}></div>
         </main>
       </div>
     </>

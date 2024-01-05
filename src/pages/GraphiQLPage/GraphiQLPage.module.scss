@@ -1,4 +1,4 @@
-.graphiQL-container {
+.graphQLcontainer {
   background-color: rgb(229, 230, 231);
   width: 100%;
   height: 100%;
@@ -11,13 +11,6 @@
     padding: 0.5rem;
     display: flex;
     width: calc(100% - 100px);
-}
-
-.editor {
-   background-color: white;
-   width: 50%;
-   height: 100%;
-   border-radius: 15px;
 }
 
 .response {

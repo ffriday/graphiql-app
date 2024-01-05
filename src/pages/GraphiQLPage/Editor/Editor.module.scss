@@ -1,0 +1,31 @@
+@mixin editor ($height) {
+  background-color: white;
+  width: 100%;
+  border-radius: 15px;
+  overflow: auto;
+  position: relative;
+  height: $height;
+  max-height: $height;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 63vh;
+}
+
+.editor {
+  @include editor(70%);
+}
+
+.subeditor {
+  @include editor(30%);
+}
+
+.editorbuttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: min-content;
+}
