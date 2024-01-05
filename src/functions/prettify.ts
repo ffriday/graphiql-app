@@ -46,6 +46,7 @@ const formatCode = (value: string, tab: string = "  "): string => {
 export const cleanCode = (code: string): string =>
   code
     .replaceAll(/[ \t]+/g, " ")
+    .replaceAll("{}", "{ }")
     .replaceAll("( ", "(")
     .replaceAll(" )", ")")
     .split(/\r?\n/)
