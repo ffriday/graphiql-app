@@ -20,7 +20,8 @@
   "graphQL-page": {
     "graphQLMessage": "All the most interesting things will be here",
     "headers": "Headers",
-    "variables": "Variables"
+    "variables": "Variables",
+    "endpoint": "Endpoint"
   },
   "toolbar": {
     "submit": "Submit",
