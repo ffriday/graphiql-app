@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 1.2rem;
+}
+
+h4 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #d1bce9;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+}
+
+.sсhemaContainer {
+  height: 100%;
+  background-color: white;
+  margin-right: 0.5rem;
+  overflow-y: scroll;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 0.8rem;
+}
+
+.fieldName {
+  color: rgb(56, 46, 163);
+  font-weight: 600;
+}
+
+.typeItem {
+  margin-top: 7px;
+}
+
+.rootItem {
+  margin-top: 10px;
+}

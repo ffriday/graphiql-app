@@ -3,4 +3,13 @@
   height: 100%;
   width: min-content;
   padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
 }
+
+.ToolbarButtons {
+  display: flex;
+  flex-direction: column;
+}
+
