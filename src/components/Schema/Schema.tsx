@@ -1,6 +1,6 @@
 // Статья с описанием получения схемы: https://medium.com/@mrthankyou/how-to-get-a-graphql-schema-28915025de0e
 import { useEffect, useState } from "react";
-import styles from "./Schema.module.scss";
+import { styles } from ".";
 import { queryAll as query } from "./constants";
 
 interface Type {
@@ -21,7 +21,7 @@ interface TypeItemProps {
 export const endpoint =
   "https://swapi-graphql.netlify.app/.netlify/functions/index";
 
-function Schema(): JSX.Element {
+export function Schema(): JSX.Element {
   type SchemaData = {
     __schema: {
       types: {
@@ -165,5 +165,3 @@ function Schema(): JSX.Element {
     </div>
   );
 }
-
-export default Schema;

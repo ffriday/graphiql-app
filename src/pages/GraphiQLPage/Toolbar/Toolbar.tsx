@@ -9,7 +9,7 @@ import { checkCode, cleanCode, prettify } from "../../../functions";
 import { useSearchParams } from "react-router-dom";
 import { INITIAL_QUERY, LangPages, ParamKeys } from "../../../constants";
 import { useState } from "react";
-import Schema from "../../../components/Schema/Schema";
+import { Schema } from "../../../components/Schema/index";
 
 export function Toolbar(): JSX.Element {
   const [searchParams, setSearchParams] = useSearchParams();
