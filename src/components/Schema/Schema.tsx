@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { styles } from ".";
 import { queryAll as query } from "./constants";
+import { LangPages } from "../../constants/constants";
+import { useTranslate } from "../../hooks/useTranslate";
 
 interface Type {
   name: string;
@@ -22,6 +24,7 @@ export const endpoint =
   "https://swapi-graphql.netlify.app/.netlify/functions/index";
 
 export function Schema(): JSX.Element {
+  const translate = useTranslate(LangPages.schema);
   type SchemaData = {
     __schema: {
       types: {
@@ -108,10 +111,10 @@ export function Schema(): JSX.Element {
 
   return (
     <div className={styles.sсhemaContainer}>
-      <h1>Schema</h1>
+      <h1>{translate("schemaTitle")}</h1>
       {schemaData && (
         <div>
-          <h4>Root Types</h4>
+          <h4>{translate("rootTitle")}</h4>
           <div>
             {schemaData.__schema.types
               .filter((type) => type.name === "Root")
@@ -147,7 +150,7 @@ export function Schema(): JSX.Element {
               ))}
           </div>
 
-          <h4>All Schema Types</h4>
+          <h4>{translate("allTypesTitle")}</h4>
           <div>
             {schemaData.__schema.types
               .filter(

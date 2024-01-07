@@ -23,7 +23,13 @@
   "toolbar": {
     "submit": "Отправить",
     "prettify": "Форматировать",
-    "clear": "Восстановить"
+    "clear": "Восстановить",
+    "docs": "Документация"
+  },
+  "schema": {
+    "schemaTitle": "Схема",
+    "rootTitle": "Корневые типы",
+    "allTypesTitle": "Все типы схемы"
   },
   "shared": {
     "errorMessage": "Ошибка 404. Такая страница не найдена",
