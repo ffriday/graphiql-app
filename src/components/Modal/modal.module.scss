@@ -22,6 +22,14 @@ $modal-color: white;
     align-items: center;
     gap: 20px;
   }
+  @media screen and (max-width: 600px) {
+    width: 300px;
+    padding-bottom: 20px;
+  }
+  @media screen and (max-width: 450px) {
+    padding-bottom: 10px;
+    width: 250px;
+  }
 }
 
 .modal-close-btn {

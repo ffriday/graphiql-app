@@ -6,10 +6,17 @@
   display: flex;
   justify-content: space-between;
   gap: 6px;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    width: 100vw;
+  }
 }
 
 .ToolbarButtons {
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+  }
 }
 

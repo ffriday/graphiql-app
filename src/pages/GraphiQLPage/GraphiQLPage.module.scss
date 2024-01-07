@@ -16,6 +16,10 @@ $endpoint-padding: 5px;
   display: flex;
   width: calc(100% - 100px);
   gap: $endpoint-padding;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    width: 100vw;
+  }
 }
 
 .container {

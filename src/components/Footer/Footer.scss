@@ -6,6 +6,9 @@
     justify-content: center;
     gap: 1rem;
     width: 100%;
+    @media screen and (max-width: 700px) {
+      gap: 0.3rem;
+    }
   }
 
   .rss-logo {
