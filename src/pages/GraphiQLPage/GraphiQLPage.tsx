@@ -22,7 +22,6 @@ export const GraphiQLPage = () => {
   const endpoint = searchParams.get(ParamKeys.endpoint) ?? INITIAL_ENDPOINT;
 
   useLoadQuery(userId);
-  useLoadQuery(userId);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { isFetching, isError, data, error, refetch } = useQuery({

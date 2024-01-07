@@ -32,7 +32,13 @@
   "toolbar": {
     "submit": "Submit",
     "prettify": "Prettify",
-    "clear": "Clear"
+    "clear": "Clear",
+    "docs": "Documentation"
+  },
+  "schema": {
+    "schemaTitle": "Schema",
+    "rootTitle": "Root Types",
+    "allTypesTitle": "All Schema Types"
   },
   "shared": {
     "errorMessage": "Error 404. Page not found",

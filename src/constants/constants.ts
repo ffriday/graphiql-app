@@ -53,4 +53,5 @@ export enum LangPages {
   graphql = "graphQL-page",
   shared = "shared",
   toolbar = "toolbar",
+  schema = "schema",
 }

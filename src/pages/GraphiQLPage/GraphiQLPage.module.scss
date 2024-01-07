@@ -23,7 +23,7 @@ $endpoint-padding: 5px;
   flex-direction: column;
   position: relative;
   width: 50%;
-  height: 63vh;
+  height: 70vh;
 }
 
 .response {
@@ -32,7 +32,7 @@ $endpoint-padding: 5px;
 }
 
 .editor {
-  @include editor(63vh);
+  @include editor(70vh);
 }
 
 .endpoint {
