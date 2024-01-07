@@ -1,6 +1,7 @@
 {
   "welcome-page": {
-    "welcomeMessage": "Welcome to the app",
+    "welcomeMessage": "Welcome to the app! Please sign in your account!",
+    "incentivePhrase": "Let's start!",
     "welcome": "Welcome",
     "signIn": "Sign in",
     "signUp": "Sign up"
@@ -12,10 +13,14 @@
     "signOut": "Sign out"
   },
   "signIn-page": {
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "noAccount": "No account? ",
+    "createOne": "Create one"
   },
   "signUp-page": {
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "signIn": "Sign in",
+    "alreadyHaveAccount": "Already have an account? "
   },
   "graphQL-page": {
     "graphQLMessage": "All the most interesting things will be here"
