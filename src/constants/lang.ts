@@ -28,6 +28,7 @@ export const lang = {
     confirmPasswordLength: "Password length should be at least 8 characters",
     confirmPasswordMaxLength: "Password cannot exceed more than 12 characters",
     passwordsDoNotMatch: "Passwords do not match",
+    schemaTitle: "Schema",
   },
   [LANGUAGES.RU]: {
     signOut: "Выйти",
@@ -50,5 +51,6 @@ export const lang = {
     passwordRequirements:
       "Пароль должен содержать как минимум одну цифру, одну заглавную букву, одну строчную букву и один специальный символ.",
     passwordsDoNotMatch: "Пароли не совпадают",
+    schemaTitle: "Схема",
   },
 };
