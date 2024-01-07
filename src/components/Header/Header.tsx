@@ -1,12 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { APP_ROUTES, LangPages } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
-import "./Header.css";
+import styles from "./Header.module.scss";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { useAuth } from "../../auth/useAuth";
 import MessageSnackbar from "../MessageSnaсkbar/MessageSnackbar";
 import { useTranslate } from "../../hooks";
+import Modal from "../Modal/Modal";
+import { SignUpPage } from "../../pages/SignUpPage/SignUpPage";
+import { SignInPage } from "../../pages/SignInPage/SignInPage";
+import ToggleAuthButton from "../ToggleAuthButton/ToggleAuthButton";
 
 export const Header = () => {
   const { userId } = useContext(AuthContext);
@@ -14,28 +18,51 @@ export const Header = () => {
   const [isSignOut, setIsSignOut] = useState(false);
   const translate = useTranslate(LangPages.header);
   const translateSystem = useTranslate(LangPages.shared);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+  const handleModalOpen = () => setIsModalOpen(true);
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setIsSignUpOpen(false);
+  };
+  const handleSignUpOpen = () => setIsSignUpOpen(!isSignUpOpen);
+
+  const navigate = useNavigate();
 
   const handlerClickLogOut = () => {
     if (userId) {
+      handleModalClose();
       handleLogOut();
       setIsSignOut(true);
+      navigate("/");
     }
   };
 
   return (
-    <header className="header">
-      <nav className="navigation">
-        <NavLink to={APP_ROUTES.WELCOME}>{translate("welcome")}</NavLink>
-        {!userId && (
+    <header className={styles.header}>
+      <nav className={styles.navigation}>
+        {!userId ? (
           <>
-            <NavLink to={APP_ROUTES.SIGNIN}>{translate("signIn")}</NavLink>
-            <NavLink to={APP_ROUTES.SIGNUP}>{translate("signUp")}</NavLink>
+            <NavLink to={APP_ROUTES.WELCOME}>{translate(`welcome`)}</NavLink>
+            <div onClick={handleModalOpen} className={styles["header-button"]}>
+              {translate("signIn")}
+            </div>
+            <div onClick={handleModalOpen} className={styles["header-button"]}>
+              GraphQl
+            </div>
+          </>
+        ) : (
+          <>
+            <NavLink to={APP_ROUTES.WELCOME}>{translate("welcome")}</NavLink>
+            <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
           </>
         )}
-        <NavLink to={APP_ROUTES.GRAPHIQL}>GraphQl</NavLink>
       </nav>
       {userId && (
-        <button onClick={handlerClickLogOut}>{translate("signOut")}</button>
+        <div onClick={handlerClickLogOut} className={styles["header-button"]}>
+          {translate("signOut")}
+        </div>
       )}
       <LanguageSelector />
       <MessageSnackbar
@@ -43,6 +70,16 @@ export const Header = () => {
         message={translateSystem("logOutSuccess")}
         severity="success"
       />
+      {!userId && (
+        <Modal open={isModalOpen} onClose={handleModalClose}>
+          {isSignUpOpen && <SignUpPage />}
+          {!isSignUpOpen && <SignInPage />}
+          <ToggleAuthButton
+            isSignUpOpen={isSignUpOpen}
+            onClick={handleSignUpOpen}
+          />
+        </Modal>
+      )}
     </header>
   );
 };

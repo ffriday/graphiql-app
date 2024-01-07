@@ -47,8 +47,8 @@ export enum LANGUAGES {
 export enum LangPages {
   welcome = "welcome-page",
   header = "header",
-  signin = "signIn-page",
-  signup = "signUp-page",
+  signing = "signIn-page",
+  sighup = "signUp-page",
   graphql = "graphQL-page",
   shared = "shared",
   toolbar = "toolbar",

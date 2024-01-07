@@ -1,6 +1,7 @@
 {
   "welcome-page": {
-    "welcomeMessage": "Добро пожаловать в приложение",
+    "welcomeMessage": "Добро пожаловать в приложение! Пожалуйста, войдите в свой аккаунт!",
+    "incentivePhrase": "Давайте начнем!",
     "welcome": "Стартовая страница",
     "signIn": "Вход",
     "signUp": "Регистрация"
@@ -12,10 +13,14 @@
     "signOut": "Выйти"
   },
   "signIn-page": {
-    "signIn": "Вход"
+    "signIn": "Вход",
+    "noAccount": "Нет аккаунта? ",
+    "createOne": "Создать аккаунт"
   },
   "signUp-page": {
-    "signUp": "Регистрация"
+    "signUp": "Регистрация",
+    "signIn": "Вход",
+    "alreadyHaveAccount": "Уже есть аккаунт? "
   },
   "graphQL-page": {
     "graphQLMessage": "Здесь будет всё самое интересное"
