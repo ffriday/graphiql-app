@@ -1,5 +1,5 @@
 import logo from "../../assets/rs-react-logo.png";
-import "./Footer.css";
+import "./Footer.scss";
 import { ProfileLinks } from "./constants";
 import GitHubLink from "../GitHubLink";
 

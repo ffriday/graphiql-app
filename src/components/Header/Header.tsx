@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { APP_ROUTES, LangPages } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
 import styles from "./Header.module.scss";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import { useAuth } from "../../auth/useAuth";
 import MessageSnackbar from "../MessageSnaсkbar/MessageSnackbar";
@@ -38,9 +38,27 @@ export const Header = () => {
       navigate("/");
     }
   };
+  const [scrolled, setScrolled] = useState(false);
+  const handleScroll = () => {
+    const offset = window.scrollY;
+    if (offset > 200) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  });
+
+  const headerClasses = [styles.header];
+  if (scrolled) {
+    headerClasses.push(styles.scrolled);
+  }
 
   return (
-    <header className={styles.header}>
+    <header className={headerClasses.join(" ")}>
       <nav className={styles.navigation}>
         {!userId ? (
           <>
