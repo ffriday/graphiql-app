@@ -12,7 +12,12 @@ export default defineConfig({
     setupFiles: ["./testConfig.ts"],
     coverage: {
       provider: "v8",
-      exclude: [...configDefaults.coverage.exclude, "*.config.js"],
+      exclude: [
+        ...configDefaults.coverage.exclude,
+        "*.config.js",
+        "*/*/types.ts",
+        "*/main.tsx",
+      ],
       all: true,
     },
   },
