@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/constants";
 import { LanguageSelector } from "../LanguageSelector";
 import { useAppContext } from "../../providers/LangProvider";
-import "./Header.scss";
+import styles from "./Header.module.scss";
 import { LANGUAGES, lang } from "../../constants/lang";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
@@ -18,13 +18,8 @@ export const Header = () => {
   const { userId } = useContext(AuthContext);
   const { handleLogOut } = useAuth();
   const { language } = useAppContext();
-  const {
-    signOut,
-    signIn,
-    //  signUp,
-    welcome,
-    logOutSuccess,
-  } = lang[language as keyof typeof LANGUAGES];
+  const { signOut, signIn, welcome, logOutSuccess } =
+    lang[language as keyof typeof LANGUAGES];
   const [isSignOut, setIsSignOut] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -46,15 +41,15 @@ export const Header = () => {
   };
 
   return (
-    <header className="header">
-      <nav className="navigation">
+    <header className={styles.header}>
+      <nav className={styles.navigation}>
         {!userId ? (
           <>
             <NavLink to={APP_ROUTES.WELCOME}>{welcome}</NavLink>
-            <div onClick={handleModalOpen} className="header-button">
+            <div onClick={handleModalOpen} className={styles["header-button"]}>
               {signIn}
             </div>
-            <div onClick={handleModalOpen} className="header-button">
+            <div onClick={handleModalOpen} className={styles["header-button"]}>
               GraphQl
             </div>
           </>
@@ -66,7 +61,7 @@ export const Header = () => {
         )}
       </nav>
       {userId && (
-        <div onClick={handlerClickLogOut} className="header-button">
+        <div onClick={handlerClickLogOut} className={styles["header-button"]}>
           {signOut}
         </div>
       )}
