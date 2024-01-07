@@ -10,7 +10,8 @@ export const lang = {
     welcome: "Welcome",
     signUp: "Sign up",
     errorMessage: "Error 404. Page not found",
-    welcomeMessage: "Welcome to the app",
+    welcomeMessage: "Welcome to the app! Please sign in your account!",
+    incentivePhrase: "Let's start!",
     graphiQLMessage: "All the most interesting things will be here",
     passwordPlaceholder: "Password",
     anotherPasswordPlacehoder: "Repeat your password.",
@@ -28,6 +29,9 @@ export const lang = {
     confirmPasswordLength: "Password length should be at least 8 characters",
     confirmPasswordMaxLength: "Password cannot exceed more than 12 characters",
     passwordsDoNotMatch: "Passwords do not match",
+    alreadyHaveAccount: "Already have an account? ",
+    noAccount: "No account? ",
+    createOne: "Create one",
   },
   [LANGUAGES.RU]: {
     signOut: "Выйти",
@@ -35,7 +39,9 @@ export const lang = {
     welcome: "Стартовая страница",
     signUp: "Регистрация",
     errorMessage: "Ошибка 404. Такая страница не найдена",
-    welcomeMessage: "Добро пожаловать в приложение",
+    welcomeMessage:
+      "Добро пожаловать в приложение! Пожалуйста, войдите в свой аккаунт!",
+    incentivePhrase: "Давайте начнем!",
     graphiQLMessage: "Все самое интересное будет происходить здесь",
     passwordPlaceholder: "Пароль",
     anotherPasswordPlacehoder: "Повторите ваш пароль.",
@@ -50,5 +56,8 @@ export const lang = {
     passwordRequirements:
       "Пароль должен содержать как минимум одну цифру, одну заглавную букву, одну строчную букву и один специальный символ.",
     passwordsDoNotMatch: "Пароли не совпадают",
+    alreadyHaveAccount: "Уже есть аккаунт? ",
+    noAccount: "Нет аккаунта? ",
+    createOne: "Создать аккаунт",
   },
 };
