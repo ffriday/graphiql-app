@@ -29,6 +29,7 @@ export const lang = {
     confirmPasswordLength: "Password length should be at least 8 characters",
     confirmPasswordMaxLength: "Password cannot exceed more than 12 characters",
     passwordsDoNotMatch: "Passwords do not match",
+    schemaTitle: "Schema",
     alreadyHaveAccount: "Already have an account? ",
     noAccount: "No account? ",
     createOne: "Create one",
@@ -56,6 +57,7 @@ export const lang = {
     passwordRequirements:
       "Пароль должен содержать как минимум одну цифру, одну заглавную букву, одну строчную букву и один специальный символ.",
     passwordsDoNotMatch: "Пароли не совпадают",
+    schemaTitle: "Схема",
     alreadyHaveAccount: "Уже есть аккаунт? ",
     noAccount: "Нет аккаунта? ",
     createOne: "Создать аккаунт",
