@@ -1,5 +1,9 @@
 import { useSearchParams } from "react-router-dom";
-import { INITIAL_QUERY, ParamKeys } from "../constants/constants";
+import {
+  INITIAL_ENDPOINT,
+  INITIAL_QUERY,
+  ParamKeys,
+} from "../constants/constants";
 import { useEffect } from "react";
 
 export function useLoadQuery(userId: string | null) {
@@ -17,10 +21,15 @@ export function useLoadQuery(userId: string | null) {
         searchParams.get(ParamKeys.headers) ||
         window.localStorage.getItem(ParamKeys.headers) ||
         "";
+      const endpoint =
+        searchParams.get(ParamKeys.endpoint) ||
+        window.localStorage.getItem(ParamKeys.endpoint) ||
+        INITIAL_ENDPOINT;
       setSearchParams({
         [ParamKeys.query]: query,
         [ParamKeys.variables]: variables,
         [ParamKeys.headers]: headers,
+        [ParamKeys.endpoint]: endpoint,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

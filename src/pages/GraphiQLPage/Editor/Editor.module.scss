@@ -1,0 +1,23 @@
+@import "../_mixin.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 70vh;
+}
+
+.editor {
+  @include editor(70%);
+}
+
+.subeditor {
+  @include editor(30%);
+}
+
+.editorbuttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  height: min-content;
+}

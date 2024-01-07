@@ -23,7 +23,11 @@
     "alreadyHaveAccount": "Уже есть аккаунт? "
   },
   "graphQL-page": {
-    "graphQLMessage": "Здесь будет всё самое интересное"
+    "graphQLMessage": "Здесь будет всё самое интересное",
+    "headers": "Заголовки",
+    "variables": "Переменные",
+    "endpoint": "Адрес API",
+    "loading": "ЗАГРУЗКА"
   },
   "toolbar": {
     "submit": "Отправить",

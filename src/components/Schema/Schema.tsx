@@ -2,8 +2,13 @@
 import { useEffect, useState } from "react";
 import { styles } from ".";
 import { queryAll as query } from "./constants";
-import { LangPages } from "../../constants/constants";
+import {
+  INITIAL_ENDPOINT,
+  LangPages,
+  ParamKeys,
+} from "../../constants/constants";
 import { useTranslate } from "../../hooks/useTranslate";
+import { useSearchParams } from "react-router-dom";
 
 interface Type {
   name: string;
@@ -20,10 +25,10 @@ interface TypeItemProps {
   type: Type;
 }
 
-export const endpoint =
-  "https://swapi-graphql.netlify.app/.netlify/functions/index";
-
 export function Schema(): JSX.Element {
+  const [searchParams] = useSearchParams();
+  const endpoint = searchParams.get(ParamKeys.endpoint) ?? INITIAL_ENDPOINT;
+
   const translate = useTranslate(LangPages.schema);
   type SchemaData = {
     __schema: {

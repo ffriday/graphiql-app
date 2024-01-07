@@ -10,6 +10,7 @@ export enum ParamKeys {
   variables = "variables",
   headers = "headers",
   language = "lang",
+  endpoint = "endpoint",
 }
 
 //unformatted query for prettyfy testing

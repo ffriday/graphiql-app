@@ -1,27 +1,74 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { Toolbar } from "../Toolbar";
 import { useSearchParams } from "react-router-dom";
-import { ParamKeys } from "../../../constants";
+import { LangPages, ParamKeys } from "../../../constants";
+import styles from "./Editor.module.scss";
+import { Button } from "@mui/material";
+import { useState } from "react";
+import { useTranslate } from "../../../hooks";
+import { QueryObserverResult, RefetchOptions } from "@tanstack/query-core";
 
-export function Editor(): JSX.Element {
-  const [getSearchParams, setSearchParams] = useSearchParams();
-  const query = getSearchParams.get(ParamKeys.query) ?? "";
+export type FetchGraphQL = {
+  refetch: (
+    options?: RefetchOptions | undefined,
+  ) => Promise<QueryObserverResult<unknown, Error>>;
+};
 
-  const onChange = (value: string) => {
-    setSearchParams({ [ParamKeys.query]: value });
-    window.localStorage.setItem(ParamKeys.query, value);
+export function Editor({ refetch }: FetchGraphQL): JSX.Element {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [showVariables, setShowVariables] = useState(true);
+  const translate = useTranslate(LangPages.graphql);
+
+  const query = searchParams.get(ParamKeys.query) ?? "";
+  const headers = searchParams.get(ParamKeys.headers) ?? "";
+  const variables = searchParams.get(ParamKeys.variables) ?? "";
+
+  const onChange = (value: string, key: ParamKeys) => {
+    searchParams.set(key, value);
+    setSearchParams(searchParams);
+    window.localStorage.setItem(key, value);
   };
 
   return (
     <>
-      <Toolbar />
-      <CodeMirror
-        className="editor"
-        value={query}
-        width="100%"
-        height="100%"
-        onChange={onChange}
-      />
+      <Toolbar refetch={refetch} />
+      <div className={styles.container}>
+        <CodeMirror
+          className={styles.editor}
+          value={query}
+          height="100%"
+          onChange={(value) => onChange(value, ParamKeys.query)}
+        />
+        <div className={styles.editorbuttons}>
+          <Button
+            type="button"
+            size="small"
+            disabled={showVariables}
+            onClick={() => setShowVariables(true)}
+          >
+            {translate("variables")}
+          </Button>
+          <Button
+            type="button"
+            size="small"
+            disabled={!showVariables}
+            onClick={() => setShowVariables(false)}
+          >
+            {translate("headers")}
+          </Button>
+        </div>
+        <CodeMirror
+          className={styles.subeditor}
+          value={showVariables ? variables : headers}
+          height="100%"
+          onChange={(value) =>
+            onChange(
+              value,
+              showVariables ? ParamKeys.variables : ParamKeys.headers,
+            )
+          }
+        />
+      </div>
     </>
   );
 }

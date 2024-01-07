@@ -10,11 +10,12 @@ import { useSearchParams } from "react-router-dom";
 import { INITIAL_QUERY, LangPages, ParamKeys } from "../../../constants";
 import { useState } from "react";
 import { Schema } from "../../../components/Schema/index";
+import { FetchGraphQL } from "../Editor";
 
-export function Toolbar(): JSX.Element {
+export function Toolbar({ refetch }: FetchGraphQL): JSX.Element {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get(ParamKeys.query) ?? "";
   const translate = useTranslate(LangPages.toolbar);
+  const query = searchParams.get(ParamKeys.query) ?? "";
   const [showSchema, setShowSchema] = useState(false);
 
   const prettifyCode = () => {
@@ -34,6 +35,10 @@ export function Toolbar(): JSX.Element {
     setShowSchema((prevShowSchema) => !prevShowSchema);
   };
 
+  const submit = () => {
+    refetch();
+  };
+
   return (
     <aside className={styles.Toolbar}>
       <div className={styles.ToolbarButtons}>
@@ -41,7 +46,7 @@ export function Toolbar(): JSX.Element {
           <Description />
         </IconButton>
 
-        <IconButton onClick={() => null} aria-label={translate("submit")}>
+        <IconButton onClick={submit} aria-label={translate("submit")}>
           <PlayCircleOutline />
         </IconButton>
 
