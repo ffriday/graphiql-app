@@ -1,0 +1,26 @@
+.footer {
+    background-color: #f1f1f1;
+    padding: 5px 0 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    @media screen and (max-width: 700px) {
+      gap: 0.3rem;
+    }
+  }
+
+  .rss-logo {
+    width: 15%;
+    border-radius: 15px;
+  }
+
+  .authors {
+    display: flex;
+  }
+
+  .github-logo {
+    width: 50%;
+    cursor: pointer;
+  }

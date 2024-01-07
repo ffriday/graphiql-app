@@ -1,0 +1,22 @@
+.Toolbar {
+  background-color: rgb(209, 188, 233);
+  height: 100%;
+  width: min-content;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    width: 100vw;
+  }
+}
+
+.ToolbarButtons {
+  display: flex;
+  flex-direction: column;
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+  }
+}
+

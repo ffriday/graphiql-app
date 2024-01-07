@@ -1,0 +1,40 @@
+.header {
+  background-color: #cba8e0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  font-size: 1rem;
+  justify-content: space-around;
+  transition: 0.3s all ease;
+  &-button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  @media screen and (max-width: 350px) {
+    font-size: 0.7rem;
+  }
+}
+
+header.scrolled {
+  padding: 5px;
+  font-size: 0.8rem;
+}
+
+.navigation {
+  display: flex;
+  gap: 2rem;
+}
+
+.navigation a {
+  color: black;
+}
+
+.lang-select {
+  font-size: 1rem;
+  padding: 0.1rem;
+}

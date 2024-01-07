@@ -1,0 +1,61 @@
+{
+  "welcome-page": {
+    "welcomeMessage": "Добро пожаловать в приложение! Пожалуйста, войдите в свой аккаунт!",
+    "incentivePhrase": "Давайте начнем!",
+    "welcome": "Стартовая страница",
+    "signIn": "Вход",
+    "signUp": "Регистрация"
+  },
+  "header": {
+    "welcome": "Стартовая страница",
+    "signIn": "Вход",
+    "signUp": "Регистрация",
+    "signOut": "Выйти"
+  },
+  "signIn-page": {
+    "signIn": "Вход",
+    "noAccount": "Нет аккаунта? ",
+    "createOne": "Создать аккаунт"
+  },
+  "signUp-page": {
+    "signUp": "Регистрация",
+    "signIn": "Вход",
+    "alreadyHaveAccount": "Уже есть аккаунт? "
+  },
+  "graphQL-page": {
+    "graphQLMessage": "Здесь будет всё самое интересное",
+    "headers": "Заголовки",
+    "variables": "Переменные",
+    "endpoint": "Адрес API",
+    "loading": "ЗАГРУЗКА"
+  },
+  "toolbar": {
+    "submit": "Отправить",
+    "prettify": "Форматировать",
+    "clear": "Восстановить",
+    "docs": "Документация"
+  },
+  "schema": {
+    "schemaTitle": "Схема",
+    "rootTitle": "Корневые типы",
+    "allTypesTitle": "Все типы схемы"
+  },
+  "shared": {
+    "errorMessage": "Ошибка 404. Такая страница не найдена",
+    "passwordPlaceholder": "Пароль",
+    "anotherPasswordPlacehoder": "Повторите ваш пароль.",
+    "signUpSuccess": "Успешная регистрация",
+    "signInSuccess": "Успешный вход",
+    "logOutSuccess": "Выход успешен",
+    "emailIsRequired": "Email обязателен",
+    "emailValid": "Email должен быть валидным",
+    "passwordIsRequired": "Пароль обязателен",
+    "passwordLength": "Длина пароля должна быть не менее 8 символов",
+    "passwordMaxLength": "Пароль не может превышать 12 символов",
+    "passwordRequirements": "Пароль должен содержать как минимум одну цифру, одну заглавную букву, одну строчную букву и один специальный символ.",
+    "confirmPasswordIsRequired": "Подтверждение пароля обязательно",
+    "confirmPasswordLength": "Длина пароля должна быть не менее 8 символов",
+    "confirmPasswordMaxLength": "Пароль не может превышать 12 символов",
+    "passwordsDoNotMatch": "Пароли не совпадают"
+  }
+}

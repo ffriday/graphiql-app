@@ -1,0 +1,61 @@
+{
+  "welcome-page": {
+    "welcomeMessage": "Welcome to the app! Please sign in your account!",
+    "incentivePhrase": "Let's start!",
+    "welcome": "Welcome",
+    "signIn": "Sign in",
+    "signUp": "Sign up"
+  },
+  "header": {
+    "welcome": "Welcome",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "signOut": "Sign out"
+  },
+  "signIn-page": {
+    "signIn": "Sign in",
+    "noAccount": "No account? ",
+    "createOne": "Create one"
+  },
+  "signUp-page": {
+    "signUp": "Sign up",
+    "signIn": "Sign in",
+    "alreadyHaveAccount": "Already have an account? "
+  },
+  "graphQL-page": {
+    "graphQLMessage": "All the most interesting things will be here",
+    "headers": "Headers",
+    "variables": "Variables",
+    "endpoint": "Endpoint",
+    "loading": "LOADING"
+  },
+  "toolbar": {
+    "submit": "Submit",
+    "prettify": "Prettify",
+    "clear": "Clear",
+    "docs": "Documentation"
+  },
+  "schema": {
+    "schemaTitle": "Schema",
+    "rootTitle": "Root Types",
+    "allTypesTitle": "All Schema Types"
+  },
+  "shared": {
+    "errorMessage": "Error 404. Page not found",
+    "passwordPlaceholder": "Password",
+    "anotherPasswordPlacehoder": "Repeat your password.",
+    "signUpSuccess": "Signup success",
+    "signInSuccess": "Sign in success",
+    "logOutSuccess": "Log out success",
+    "emailIsRequired": "Email is required",
+    "emailValid": "Email must be a valid email",
+    "passwordIsRequired": "Password is required",
+    "passwordLength": "Password length should be at least 8 characters",
+    "passwordMaxLength": "Password cannot exceed more than 12 characters",
+    "passwordRequirements": "Password must contain at least one number, one uppercase letter, one lowercase letter, and one special character.",
+    "confirmPasswordIsRequired": "Confirm Password is required",
+    "confirmPasswordLength": "Password length should be at least 8 characters",
+    "confirmPasswordMaxLength": "Password cannot exceed more than 12 characters",
+    "passwordsDoNotMatch": "Passwords do not match"
+  }
+}
