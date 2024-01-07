@@ -1,14 +1,13 @@
 import { Suspense, useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 import {
-  APP_ROUTES,
   INITIAL_ENDPOINT,
   LangPages,
   ParamKeys,
 } from "../../constants/constants";
 import { SignInPage } from "../SignInPage/SignInPage";
 import { Editor } from "./Editor";
-import { useLoadQuery, useRedirect, useTranslate } from "../../hooks";
+import { useLoadQuery, useTranslate } from "../../hooks";
 import CodeMirror from "@uiw/react-codemirror";
 import { Input, InputLabel } from "@mui/material";
 import styles from "./GraphiQLPage.module.scss";
@@ -22,7 +21,7 @@ export const GraphiQLPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const endpoint = searchParams.get(ParamKeys.endpoint) ?? INITIAL_ENDPOINT;
 
-  useRedirect(`/${APP_ROUTES.SIGNIN}`, null);
+  useLoadQuery(userId);
   useLoadQuery(userId);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

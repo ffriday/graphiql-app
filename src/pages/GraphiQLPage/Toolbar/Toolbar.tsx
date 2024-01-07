@@ -17,6 +17,8 @@ export function Toolbar({ refetch }: FetchGraphQL): JSX.Element {
   const prettifyCode = () => {
     searchParams.set(ParamKeys.query, prettify(query));
     setSearchParams(searchParams);
+    searchParams.set(ParamKeys.query, prettify(query));
+    setSearchParams(searchParams);
   };
 
   const clear = () => {
