@@ -23,8 +23,7 @@ export const GraphiQLPage = () => {
 
   useLoadQuery(userId);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { isFetching, isError, data, error, refetch } = useQuery({
+  const { isFetching, data, refetch } = useQuery({
     queryKey: ["graphql"],
     queryFn: async () => {
       const query = searchParams.get(ParamKeys.query) ?? "";
@@ -36,7 +35,7 @@ export const GraphiQLPage = () => {
       try {
         if (headers) headersObject = JSON.parse(headers);
       } catch (e) {
-        console.log("bad header");
+        console.log("Bad Header");
       }
 
       const data = await fetch(endpoint, {
